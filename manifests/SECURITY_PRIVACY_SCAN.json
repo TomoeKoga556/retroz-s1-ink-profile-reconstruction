@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "private_matches": [],
+  "classified_review_terms": [
+    {
+      "path": "DEPENDENCY_LICENSE_REPORT.md",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "SECURITY.md",
+      "term": "secret",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/PUBLIC_MANIFEST_SHA256.json",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/ROOT_MANIFEST_SHA256.json",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/SECURITY_PRIVACY_SCAN.json",
+      "term": "secret",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/SECURITY_PRIVACY_SCAN.json",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/SECURITY_PRIVACY_SCAN.json",
+      "term": "holdout",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "manifests/SECURITY_PRIVACY_SCAN.json",
+      "term": "shadow",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "scripts/build_report.py",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "scripts/security_privacy_scan.py",
+      "term": "validation",
+      "classification": "SCANNER_RULE"
+    },
+    {
+      "path": "scripts/security_privacy_scan.py",
+      "term": "holdout",
+      "classification": "SCANNER_RULE"
+    },
+    {
+      "path": "scripts/security_privacy_scan.py",
+      "term": "shadow",
+      "classification": "SCANNER_RULE"
+    },
+    {
+      "path": "scripts/validate_documents.py",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    },
+    {
+      "path": "docs/portfolio/LESSONS_LEARNED.md",
+      "term": "validation",
+      "classification": "BENIGN_DOCUMENTATION_OR_CODE"
+    }
+  ],
+  "symlinks": [],
+  "cache_directories": [],
+  "protected_video_files": [],
+  "files_over_10_mib": []
+}

@@ -1,0 +1,8 @@
+{
+  "instruction": "Verify the separately held private manifest locally; never upload the private bundle.",
+  "private_bundle_is_physically_separate": true,
+  "private_contents_disclosed_publicly": false,
+  "private_manifest_sha256": "f4d84f014c897a58ed9a654eb2b3395090c891d24ce29d68c2dcf6d08cc5780d",
+  "public_dependency": false,
+  "schema": 1
+}

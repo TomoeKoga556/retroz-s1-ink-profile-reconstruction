@@ -1,0 +1,6 @@
+{
+  "candidate": "A",
+  "failure": "self-blocking activation",
+  "activated_samples": 0,
+  "total_samples": 512
+}

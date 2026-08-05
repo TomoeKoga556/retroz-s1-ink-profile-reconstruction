@@ -1,0 +1,35 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "A",
+      "display_name": "Half-Profile Constrained Reconstruction",
+      "public_reproduction": "Synthetic activation failure only",
+      "status": "REJECTED_PRE_IMAGE"
+    },
+    {
+      "candidate_id": "B",
+      "display_name": "Monotone Local Shoulder Remapping",
+      "public_reproduction": "Research-only user image plus synthetic",
+      "status": "REAL_NEAR_NO_OP"
+    },
+    {
+      "candidate_id": "C",
+      "display_name": "PSF and Continuous-Coverage Reconstruction",
+      "public_reproduction": "Synthetic failure only",
+      "status": "SYNTHETIC_REJECT"
+    },
+    {
+      "candidate_id": "D3",
+      "display_name": "Geometry-Guided Contour Reconstruction",
+      "public_reproduction": "Synthetic geometry and research-only user image",
+      "status": "REAL_EXACT_NO_OP"
+    },
+    {
+      "candidate_id": "ORACLE",
+      "display_name": "Human-Verified Contour Feasibility Study",
+      "public_reproduction": "User-owned image and labels only",
+      "status": "ORACLE_NEAR_NO_OP"
+    }
+  ],
+  "project_status": "PROVISIONAL_NO_OP"
+}

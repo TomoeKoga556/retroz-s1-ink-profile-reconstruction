@@ -1,0 +1,7 @@
+{
+  "threshold_bytes": 10485760,
+  "hard_limit_bytes": 104857600,
+  "files": [],
+  "files_over_100_mib": 0,
+  "status": "PASS"
+}

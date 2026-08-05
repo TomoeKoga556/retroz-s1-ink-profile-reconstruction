@@ -1,0 +1,29 @@
+{
+  "categories": {
+    "build_noise": [
+      "runtime caches",
+      "compiled bytecode",
+      "test caches",
+      "local wheels"
+    ],
+    "private_provenance": [
+      "exact workstation paths",
+      "private label coordinates",
+      "raw session logs",
+      "private frame hashes"
+    ],
+    "protected_media": [
+      "animation frames",
+      "frame crops",
+      "contact sheets",
+      "videos",
+      "frame-derived candidate outputs"
+    ],
+    "superseded_research": [
+      "obsolete candidate versions",
+      "intermediate reports not needed for public claims"
+    ]
+  },
+  "public_protected_asset_count": 0,
+  "schema": 1
+}

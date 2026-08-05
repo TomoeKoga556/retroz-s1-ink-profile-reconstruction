@@ -1,0 +1,8 @@
+{
+  "normal_operation": "synthetic_only",
+  "private_real_frame_replay": "physically_separate_not_public",
+  "protected_assets": 0,
+  "schema": 1,
+  "scientific_status": "PROVISIONAL_NO_OP",
+  "status": "PUBLIC_CLEAN_ROOM_REPRODUCIBLE"
+}

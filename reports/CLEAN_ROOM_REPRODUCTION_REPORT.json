@@ -1,0 +1,244 @@
+{
+  "status": "PASS",
+  "historical_tree_available": false,
+  "private_bundle_available": false,
+  "protected_media_available": false,
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "pip",
+        "install",
+        ".",
+        "--no-deps",
+        "--no-build-isolation",
+        "--target",
+        "/tmp/retroz_s1_clean_room_5acet8qz/install-site"
+      ],
+      "returncode": 0,
+      "stdout": "Processing ./.\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: retroz-s1\n  Building wheel for retroz-s1 (pyproject.toml): started\n  Building wheel for retroz-s1 (pyproject.toml): finished with status 'done'\n  Created wheel for retroz-s1: filename=retroz_s1-0.1.0-py3-none-any.whl size=50930 sha256=b2117ebabb78dde3e15510307272561efff907f11f45d75e3bcc912f9345900e\n  Stored in directory: /tmp/pip-ephem-wheel-cache-38uc2_qf/wheels/01/2e/aa/b532d0cd81da3274363266e73f5017e62c7ba4f1001a20e315\nSuccessfully built retroz-s1\nInstalling collected packages: retroz-s1\nSuccessfully installed retroz-s1-0.1.0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "/tmp/retroz_s1_clean_room_5acet8qz/install-site/retroz_s1"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout": "usage: python -m retroz_s1 [-h] [--version]\n                           {list-candidates,inspect,render,reproduce-failure,compare,oracle-render} ...\n\nRetroZ S1 research CLI. Current status: PROVISIONAL_NO_OP.\n\npositional arguments:\n  {list-candidates,inspect,render,reproduce-failure,compare,oracle-render}\n    list-candidates     List candidate status and capabilities\n    inspect             Inspect one candidate\n    render              Render a rejected research candidate on a user-owned\n                        image\n    reproduce-failure   Generate a public-safe synthetic failure reproduction\n    compare             Compare research candidates on a user-owned image\n    oracle-render       Render with user-supplied contour labels\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "list-candidates"
+      ],
+      "returncode": 0,
+      "stdout": "A        REJECTED_PRE_IMAGE     Half-Profile Constrained Reconstruction\nB        REAL_NEAR_NO_OP        Monotone Local Shoulder Remapping\nC        SYNTHETIC_REJECT       PSF and Continuous-Coverage Reconstruction\nD3       REAL_EXACT_NO_OP       Geometry-Guided Contour Reconstruction\nORACLE   ORACLE_NEAR_NO_OP      Human-Verified Contour Feasibility Study\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "inspect",
+        "--candidate",
+        "D3"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"actual_result\": \"Extensive synthetic contracts passed, but all 20 real arrays were float-bit-identical to the baseline.\",\n  \"candidate_id\": \"D3\",\n  \"display_name\": \"Geometry-Guided Contour Reconstruction\",\n  \"expected_behavior\": \"Reconstruct locally safe contour-cell coverage from source-fixed geometry.\",\n  \"internal_id\": \"s1_candidate_d3_r0_contour_cell_coverage_renderer_v1\",\n  \"known_failure\": \"synthetic-real gap and exact real no-op\",\n  \"lineage\": \"D/D2/D3\",\n  \"private_files\": [\n    \"fixed TRAIN Smoke evidence\"\n  ],\n  \"provenance_hashes\": [\n    {\n      \"path\": \"src/retroz_s1/geometry/contour_estimator.py\",\n      \"sha256\": \"4ce5cadb24d3878bd75a05333205534c64ae38ff4a585bf2ffa763251f222b85\"\n    },\n    {\n      \"path\": \"src/retroz_s1/candidates/d3_renderer.py\",\n      \"sha256\": \"70efa0a037db12e6e5baa3eea65ce446de8cdfd95b85091a0a1703105bc482d4\"\n    },\n    {\n      \"path\": \"src/retroz_s1/public_masks.py\",\n      \"sha256\": \"8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5\"\n    }\n  ],\n  \"public_files\": [\n    \"src/retroz_s1/geometry/contour_estimator.py\",\n    \"src/retroz_s1/candidates/d3_renderer.py\"\n  ],\n  \"real_image_reproducer_available\": true,\n  \"requires_oracle_labels\": false,\n  \"requires_private_data\": false,\n  \"runnable_on_user_image\": true,\n  \"scientific_interpretation\": \"Local correctness does not imply activation on real distributions.\",\n  \"status\": \"REAL_EXACT_NO_OP\",\n  \"superseded_by\": null,\n  \"synthetic_reproducer_available\": true,\n  \"version\": \"E0-v2 plus R0-v3\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/generate_synthetic_demo.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"generated_assets\": 11,\n  \"protected_assets\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "returncode": 0,
+      "stdout": "................                                                         [100%]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "reproduce-failure",
+        "--candidate",
+        "A",
+        "--output",
+        "clean-output/a",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"candidate\": \"A\",\n  \"failure\": \"self-blocking activation\",\n  \"activated_samples\": 0,\n  \"total_samples\": 512\n}\n",
+      "stderr": "Candidate A: REJECTED_PRE_IMAGE\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "reproduce-failure",
+        "--candidate",
+        "C",
+        "--output",
+        "clean-output/c",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"candidate\": \"C\",\n  \"failure\": \"raster halo and angular bias\",\n  \"mean_absolute_halo_energy\": 0.0014674439478371982\n}\n",
+      "stderr": "Candidate C: SYNTHETIC_REJECT\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "render",
+        "--candidate",
+        "B",
+        "--input",
+        "examples/synthetic/original_fixture.png",
+        "--output",
+        "clean-output/b.png",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Candidate B: REAL_NEAR_NO_OP\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "render",
+        "--candidate",
+        "D3",
+        "--input",
+        "examples/synthetic/original_fixture.png",
+        "--output",
+        "clean-output/d3.png",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Candidate D3: REAL_EXACT_NO_OP\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "oracle-render",
+        "--input",
+        "examples/synthetic/original_fixture.png",
+        "--labels",
+        "examples/synthetic/oracle_labels.json",
+        "--method",
+        "P1",
+        "--tier",
+        "R0",
+        "--output",
+        "clean-output/oracle.png",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Candidate ORACLE: ORACLE_NEAR_NO_OP\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "-m",
+        "retroz_s1",
+        "compare",
+        "--input",
+        "examples/synthetic/original_fixture.png",
+        "--candidates",
+        "B,D3",
+        "--output",
+        "clean-output/compare",
+        "--allow-rejected-research-candidate"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Candidate B: REAL_NEAR_NO_OP\nCandidate D3: REAL_EXACT_NO_OP\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/build_report.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"markdown\": \"RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md\",\n  \"pdf\": \"RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf\",\n  \"pdf_pages\": 57,\n  \"scientific_status\": \"PROVISIONAL_NO_OP\",\n  \"protected_assets\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/build_docs.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"builder\": \"dependency-free fallback\",\n  \"pages\": 16,\n  \"site\": \"/tmp/retroz_s1_clean_room_5acet8qz/repo/site-preview\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/validate_documents.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"json_files\": 35,\n  \"yaml_files\": 5,\n  \"local_links\": 3,\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/build_manifests.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"root_files\": 146,\n  \"source_files\": 39,\n  \"evidence_files\": 48\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python",
+        "scripts/verify_repository.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"errors\": [],\n  \"public_images\": [\n    \"docs/assets/generated/candidate-comparison.png\",\n    \"docs/assets/generated/oracle-delta.png\",\n    \"docs/figures/github-social-preview.png\",\n    \"examples/synthetic/candidate_b.png\",\n    \"examples/synthetic/candidate_d3.png\",\n    \"examples/synthetic/failure_c/psf_output.png\",\n    \"examples/synthetic/failure_c/source.png\",\n    \"examples/synthetic/oracle_p1_r0.png\",\n    \"examples/synthetic/original_fixture.png\",\n    \"github-social-preview.png\"\n  ],\n  \"protected_images\": 0,\n  \"privacy_matches\": [],\n  \"symlinks\": []\n}\n",
+      "stderr": ""
+    }
+  ]
+}

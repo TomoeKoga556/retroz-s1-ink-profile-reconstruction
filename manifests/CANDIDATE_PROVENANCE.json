@@ -1,0 +1,103 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "A",
+      "private_files": [],
+      "provenance_hashes": [
+        {
+          "path": "src/retroz_s1/synthetic.py",
+          "sha256": "e1b07e8d9e4714f1cddb828434fb334fe385fb153046d13d23390e59598a851a"
+        }
+      ],
+      "public_files": [
+        "src/retroz_s1/synthetic.py"
+      ],
+      "status": "REJECTED_PRE_IMAGE"
+    },
+    {
+      "candidate_id": "B",
+      "private_files": [
+        "fixed TRAIN Smoke evidence"
+      ],
+      "provenance_hashes": [
+        {
+          "path": "src/retroz_s1/candidates/b_runtime.py",
+          "sha256": "07bc85cc88937c9e67c8a6bf9578f82cc3444a1d3d5efeb5909026fe35c3d7ac"
+        },
+        {
+          "path": "src/retroz_s1/public_masks.py",
+          "sha256": "8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5"
+        }
+      ],
+      "public_files": [
+        "src/retroz_s1/candidates/b_runtime.py"
+      ],
+      "status": "REAL_NEAR_NO_OP"
+    },
+    {
+      "candidate_id": "C",
+      "private_files": [],
+      "provenance_hashes": [
+        {
+          "path": "src/retroz_s1/synthetic.py",
+          "sha256": "e1b07e8d9e4714f1cddb828434fb334fe385fb153046d13d23390e59598a851a"
+        }
+      ],
+      "public_files": [
+        "src/retroz_s1/synthetic.py"
+      ],
+      "status": "SYNTHETIC_REJECT"
+    },
+    {
+      "candidate_id": "D3",
+      "private_files": [
+        "fixed TRAIN Smoke evidence"
+      ],
+      "provenance_hashes": [
+        {
+          "path": "src/retroz_s1/geometry/contour_estimator.py",
+          "sha256": "4ce5cadb24d3878bd75a05333205534c64ae38ff4a585bf2ffa763251f222b85"
+        },
+        {
+          "path": "src/retroz_s1/candidates/d3_renderer.py",
+          "sha256": "70efa0a037db12e6e5baa3eea65ce446de8cdfd95b85091a0a1703105bc482d4"
+        },
+        {
+          "path": "src/retroz_s1/public_masks.py",
+          "sha256": "8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5"
+        }
+      ],
+      "public_files": [
+        "src/retroz_s1/geometry/contour_estimator.py",
+        "src/retroz_s1/candidates/d3_renderer.py"
+      ],
+      "status": "REAL_EXACT_NO_OP"
+    },
+    {
+      "candidate_id": "ORACLE",
+      "private_files": [
+        "protected V3 labels and contact sheets"
+      ],
+      "provenance_hashes": [
+        {
+          "path": "src/retroz_s1/candidates/oracle_core.py",
+          "sha256": "0b2c61e106fb7083d8f2c96120bd8136b6d28d70e6fbefc7d27c5e3b51fa0331"
+        },
+        {
+          "path": "src/retroz_s1/candidates/oracle_renderer.py",
+          "sha256": "47345ae91bc498437ff1aa3b4856869db6a5a5424deb9685404dbe2325d6ef8f"
+        },
+        {
+          "path": "src/retroz_s1/candidates/oracle_exclusion.py",
+          "sha256": "9ee8f8f67d0282c51ebfd3a3d5d9bbe0038aa5650b23ba6558c26241cb77b53c"
+        }
+      ],
+      "public_files": [
+        "src/retroz_s1/candidates/oracle_core.py",
+        "src/retroz_s1/candidates/oracle_renderer.py"
+      ],
+      "status": "ORACLE_NEAR_NO_OP"
+    }
+  ],
+  "schema": 1
+}

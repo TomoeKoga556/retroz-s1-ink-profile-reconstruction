@@ -1,0 +1,69 @@
+{
+  "asset_policy": "synthetic_only",
+  "candidate_b": {
+    "public_mask_approximation": true,
+    "active_pixels": 13
+  },
+  "candidate_d3": {
+    "renderer_id": "s1_candidate_d3_r0_contour_cell_coverage_renderer_v1",
+    "bound_estimator_id": "s1_candidate_d3_e0_contour_estimator_v2",
+    "native_shape_hw": [
+      320,
+      320
+    ],
+    "native_width_scale_from_540": 0.5925925925925926,
+    "input_patch_count": 2,
+    "accepted_patch_count": 2,
+    "noop_patch_count": 0,
+    "noop_reasons": "{}",
+    "modified_pixel_count": 1124,
+    "real_images_opened": 0,
+    "candidate_output_dependent_geometry": false
+  },
+  "oracle_changed_pixels": 100,
+  "oracle_diagnostics": {
+    "renderer_id": "s1_manual_ink_oracle_renderer_v2",
+    "supersedes_renderer_id": "s1_manual_ink_oracle_renderer_v1",
+    "v1_failure": "plateau_read_neighborhood_was_incorrectly_limited_to_write_tube",
+    "method": "P1",
+    "tier": "R0",
+    "fold": 0,
+    "native_shape_hw": [
+      320,
+      320
+    ],
+    "dark_target_width_px": 0.5845925925925926,
+    "bright_target_width_px": 0.6173037037037037,
+    "support_radius_px": 1.0,
+    "p50_offset_px": 0.0,
+    "segment_count": 1,
+    "applied_segment_count": 1,
+    "noop_segment_count": 0,
+    "occupied_pixel_count": 100,
+    "changed_pixel_count": 0,
+    "outside_oracle_changed_pixel_count": 0,
+    "hard_changed_pixel_count": 0,
+    "segment_records": [
+      {
+        "segment_id": "SYN-001",
+        "class": "outer_ink",
+        "status": "APPLIED",
+        "support_pixels": 100,
+        "changed_pixels_linear": 0,
+        "mean_abs_linear_rgb": 7.170190367370803e-19,
+        "max_abs_linear_rgb": 2.2551405187698492e-17,
+        "plateau_read_radius_px": 3.0,
+        "dark_plateau_linear_rgb": [
+          0.6239604110592908,
+          0.09084171676066576,
+          0.05612849604490194
+        ],
+        "bright_plateau_linear_rgb": [
+          0.6239604110592908,
+          0.7304607547001499,
+          0.7529422302946533
+        ]
+      }
+    ]
+  }
+}

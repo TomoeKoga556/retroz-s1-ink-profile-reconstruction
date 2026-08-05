@@ -1,0 +1,181 @@
+{
+  "failures": [
+    {
+      "actual_behavior": "eligibility never activates",
+      "affected_candidate": "A",
+      "detection_stage": "pre-image",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "self-blocking activation",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "synthetic activation plot",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "eligibility never activates"
+    },
+    {
+      "actual_behavior": "bright and total width moved opposite target",
+      "affected_candidate": "B",
+      "detection_stage": "real Smoke",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "wrong-direction transformation",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "profile mapping",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "bright and total width moved opposite target"
+    },
+    {
+      "actual_behavior": "only three of five folds moved positively",
+      "affected_candidate": "B",
+      "detection_stage": "real Smoke",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "fold instability",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "fold chart",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "only three of five folds moved positively"
+    },
+    {
+      "actual_behavior": "positive diffusion spreads beyond intended support",
+      "affected_candidate": "C/C2",
+      "detection_stage": "synthetic",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "raster halo",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "rotated edge blur",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "positive diffusion spreads beyond intended support"
+    },
+    {
+      "actual_behavior": "kernel response creates unwanted lobes",
+      "affected_candidate": "C",
+      "detection_stage": "synthetic",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "ringing",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "impulse profile",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "kernel response creates unwanted lobes"
+    },
+    {
+      "actual_behavior": "rotation coefficient exceeded the frozen ceiling",
+      "affected_candidate": "C2",
+      "detection_stage": "synthetic",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "angular bias",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "angle sweep",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "rotation coefficient exceeded the frozen ceiling"
+    },
+    {
+      "actual_behavior": "metrics were model-derived or harness self-tests failed",
+      "affected_candidate": "C3/C4",
+      "detection_stage": "pre-binding",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "invalid measurement harness",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "harness separation test",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "metrics were model-derived or harness self-tests failed"
+    },
+    {
+      "actual_behavior": "strong synthetic activation became exact no-op",
+      "affected_candidate": "D3",
+      "detection_stage": "real Smoke",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "synthetic-real gap",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "fixture versus user image",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "strong synthetic activation became exact no-op"
+    },
+    {
+      "actual_behavior": "semantic classes did not support a reliable operator",
+      "affected_candidate": "E semantic",
+      "detection_stage": "audit",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "semantic misclassification",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "abstract confusion matrix",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "semantic classes did not support a reliable operator"
+    },
+    {
+      "actual_behavior": "all real outputs were bit-identical",
+      "affected_candidate": "D3",
+      "detection_stage": "real Smoke",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "exact real no-op",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "identity checksum",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "all real outputs were bit-identical"
+    },
+    {
+      "actual_behavior": "nonzero deltas were unseen in 50/50 native panels",
+      "affected_candidate": "Oracle",
+      "detection_stage": "blind review",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "measurable but invisible change",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "synthetic A/B",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "nonzero deltas were unseen in 50/50 native panels"
+    },
+    {
+      "actual_behavior": "required source/hash chain did not close",
+      "affected_candidate": "multiple",
+      "detection_stage": "preflight",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "provenance conflict",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "manifest verifier",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "required source/hash chain did not close"
+    },
+    {
+      "actual_behavior": "runtime closure or import boundary was invalid",
+      "affected_candidate": "common evaluator",
+      "detection_stage": "integration",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "sandbox conflict",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "sandbox contract test",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "runtime closure or import boundary was invalid"
+    },
+    {
+      "actual_behavior": "verified dependencies could not be loaded",
+      "affected_candidate": "common evaluator",
+      "detection_stage": "preflight",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "runtime materialization failure",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "dependency probe",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "verified dependencies could not be loaded"
+    },
+    {
+      "actual_behavior": "glow/exclusions invalidated early labels or rendering",
+      "affected_candidate": "Oracle V1/V2",
+      "detection_stage": "human audit",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "invalid label or audit design",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "synthetic label audit",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "glow/exclusions invalidated early labels or rendering"
+    },
+    {
+      "actual_behavior": "protected data cannot be redistributed",
+      "affected_candidate": "private real runs",
+      "detection_stage": "packaging",
+      "expected_behavior": "safe positive S1 transformation",
+      "failure": "insufficient public evidence",
+      "failure_domain": "science/evaluation/code as documented",
+      "public_synthetic_reproducer": "public synthetic substitute",
+      "resulting_next_design": "fail-closed successor or terminal closure",
+      "root_cause": "protected data cannot be redistributed"
+    }
+  ],
+  "schema_version": 1
+}
