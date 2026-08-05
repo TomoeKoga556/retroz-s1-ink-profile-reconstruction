@@ -22,8 +22,8 @@
     },
     {
       "path": "CITATION.cff",
-      "sha256": "eba2564af84853823719668d495080774c6fb794b484982279c84b1a7af756d6",
-      "size_bytes": 483
+      "sha256": "ec1b440be03f06e46d1ad0e8dc6e7ed8e6dda3008e8feab0844c9d7a6ac7afff",
+      "size_bytes": 497
     },
     {
       "path": "CODE_OF_CONDUCT.md",
@@ -66,9 +66,9 @@
       "size_bytes": 169
     },
     {
-      "path": "LICENSE_REVIEW_REQUIRED.md",
-      "sha256": "66bb916c52bc909dee91879a96d86391766b854e322465ebb3150a8323abe2b4",
-      "size_bytes": 396
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358
     },
     {
       "path": "Makefile",
@@ -77,8 +77,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "64cdecf31d63551710ddd59d492b9dd259860386f294b627cca84f21192a34d6",
-      "size_bytes": 6016
+      "sha256": "26052f39b603450fe2cd1627964efdc6061f0ee4ad4d8e349460fdc2a3ed9bb3",
+      "size_bytes": 6350
     },
     {
       "path": "ROADMAP.md",
@@ -316,11 +316,6 @@
       "size_bytes": 559
     },
     {
-      "path": "docs/website/README.md",
-      "sha256": "537fbcfe1b30884a4abb9c0e1542336059cd69a86e281d1e03214e190a7b8d2b",
-      "size_bytes": 235
-    },
-    {
       "path": "examples/README.md",
       "sha256": "cc43cb01bc9587e92b54f6dfe3db9043f279db0b3143c80ed01a1153872286f6",
       "size_bytes": 183
@@ -416,26 +411,6 @@
       "size_bytes": 746
     },
     {
-      "path": "release/RELEASE_NOTES.md",
-      "sha256": "c5048df2a44f881f76d52f68232065eb5381cc81463dd63b06f727cb21580af0",
-      "size_bytes": 496
-    },
-    {
-      "path": "release/RetroZ-S1-v0.1.0-reproducibility-manifest.json",
-      "sha256": "eb459299f7c808bc5c1ac149684bc82a2f533dfb2943b836f282063cd03307d6",
-      "size_bytes": 493
-    },
-    {
-      "path": "release/RetroZ-S1-v0.1.0-research-report.pdf",
-      "sha256": "633f9aa171e2aa252849fa833a2c15fd7541df4800b0ec505bb2df22aaf120e6",
-      "size_bytes": 132628
-    },
-    {
-      "path": "release/RetroZ-S1-v0.1.0-research-source.tar.gz",
-      "sha256": "9609528722077836cefdc1c8170c69f73b9d8b12525d813649aca9ec080dd0ad",
-      "size_bytes": 253863
-    },
-    {
       "path": "reports/CLEAN_ROOM_REPRODUCTION_REPORT.json",
       "sha256": "c1696f9e69dfd7555708eebea98494d4413f618686ddaa4eed58459fa75967eb",
       "size_bytes": 10259
@@ -469,11 +444,6 @@
       "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md",
       "sha256": "d0f4bdfec9000abee77728f58d34f98b732a8c1185c28c1c81bd2250c1a75337",
       "size_bytes": 25375
-    },
-    {
-      "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf",
-      "sha256": "633f9aa171e2aa252849fa833a2c15fd7541df4800b0ec505bb2df22aaf120e6",
-      "size_bytes": 132628
     },
     {
       "path": "requirements-lock.txt",
@@ -532,8 +502,8 @@
     },
     {
       "path": "scripts/verify_repository.py",
-      "sha256": "734d6ae4f5df8d28f3329874a6d95f83390fde9fba7a0faf9bb15e290ce321ee",
-      "size_bytes": 3440
+      "sha256": "8ec043e25f39b588d637bbdc992e09cac804ad015fdf097954610dd9f56e1e6c",
+      "size_bytes": 3605
     },
     {
       "path": "src/retroz_s1/__init__.py",

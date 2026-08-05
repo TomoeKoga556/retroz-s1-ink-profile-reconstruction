@@ -35,7 +35,18 @@ def main() -> int:
     for path in ROOT.rglob("*"):
         rel=path.relative_to(ROOT).as_posix()
         if path.is_symlink(): symlinks.append(rel)
-        if not path.is_file() or any(x in path.parts for x in (".pytest_cache", "__pycache__", "site-preview", "release-bundle", "clean-output")): continue
+        if not path.is_file() or any(
+            x in path.parts
+            for x in (
+                ".git",
+                ".pytest_cache",
+                "__pycache__",
+                "site-preview",
+                "release-bundle",
+                "clean-output",
+            )
+        ):
+            continue
         if path.suffix.lower() in PROTECTED_MEDIA: errors.append(f"protected-media:{rel}")
         if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".gif", ".webp"}: images.append(rel)
         if path.suffix.lower() in TEXT_EXT:

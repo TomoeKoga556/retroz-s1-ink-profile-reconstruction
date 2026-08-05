@@ -196,11 +196,6 @@
       "size_bytes": 559
     },
     {
-      "path": "docs/website/README.md",
-      "sha256": "537fbcfe1b30884a4abb9c0e1542336059cd69a86e281d1e03214e190a7b8d2b",
-      "size_bytes": 235
-    },
-    {
       "path": "reports/CLEAN_ROOM_REPRODUCTION_REPORT.json",
       "sha256": "c1696f9e69dfd7555708eebea98494d4413f618686ddaa4eed58459fa75967eb",
       "size_bytes": 10259
@@ -234,11 +229,6 @@
       "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md",
       "sha256": "d0f4bdfec9000abee77728f58d34f98b732a8c1185c28c1c81bd2250c1a75337",
       "size_bytes": 25375
-    },
-    {
-      "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf",
-      "sha256": "633f9aa171e2aa252849fa833a2c15fd7541df4800b0ec505bb2df22aaf120e6",
-      "size_bytes": 132628
     }
   ],
   "schema": 1,

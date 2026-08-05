@@ -62,8 +62,8 @@
     },
     {
       "path": "scripts/verify_repository.py",
-      "sha256": "734d6ae4f5df8d28f3329874a6d95f83390fde9fba7a0faf9bb15e290ce321ee",
-      "size_bytes": 3440
+      "sha256": "8ec043e25f39b588d637bbdc992e09cac804ad015fdf097954610dd9f56e1e6c",
+      "size_bytes": 3605
     },
     {
       "path": "src/retroz_s1/__init__.py",
