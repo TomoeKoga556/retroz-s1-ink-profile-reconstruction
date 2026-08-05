@@ -112,4 +112,15 @@ No protected anime frames, crops, contact sheets, videos, or private labels are 
 
 ## License Status
 
-No final license has been selected. See `LICENSE_REVIEW_REQUIRED.md` and `SOURCE_OWNERSHIP_AUDIT.md` before publication.
+The repository's original source code, documentation, synthetic fixtures, and
+generated research artifacts are released under the Apache License 2.0 unless
+otherwise noted.
+
+The repository does not publicly include protected anime media, model weights,
+or bundled third-party source packages.
+
+Third-party dependencies remain under their respective licenses. See:
+
+- `THIRD_PARTY_NOTICES.md`
+- `DEPENDENCY_LICENSE_REPORT.md`
+- `SOURCE_OWNERSHIP_AUDIT.md`
