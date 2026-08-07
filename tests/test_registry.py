@@ -5,9 +5,15 @@ from retroz_s1.cli import candidate, registry
 
 
 def test_registry_is_provisional_noop():
-    data=registry()
+    data = registry()
     assert data["scientific_status"] == "PROVISIONAL_NO_OP"
-    assert {x["candidate_id"] for x in data["candidates"]} == {"A","B","C","D3","ORACLE"}
+    assert {item["candidate_id"] for item in data["candidates"]} == {
+        "A",
+        "B",
+        "C",
+        "D3",
+        "ORACLE",
+    }
 
 
 def test_every_candidate_has_failure_and_status():
@@ -17,10 +23,16 @@ def test_every_candidate_has_failure_and_status():
         assert item["actual_result"]
 
 
-def test_lookup():
+def test_lookup_is_case_insensitive():
     assert candidate("d3")["status"] == "REAL_EXACT_NO_OP"
 
 
 def test_packaged_registry_matches_repository_registry():
-    root=Path(__file__).resolve().parents[1]
-    assert json.loads((root/"configs/candidate_registry.json").read_text()) == json.loads((root/"src/retroz_s1/configs/candidate_registry.json").read_text())
+    root = Path(__file__).resolve().parents[1]
+    repository_registry = json.loads(
+        (root / "configs/candidate_registry.json").read_text()
+    )
+    packaged_registry = json.loads(
+        (root / "src/retroz_s1/configs/candidate_registry.json").read_text()
+    )
+    assert repository_registry == packaged_registry

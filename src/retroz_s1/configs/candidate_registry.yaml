@@ -1,141 +1,143 @@
-candidates:
-- actual_result: The eligibility proxy collapsed below its activation threshold; A2
-    measurement accuracy was invalid.
-  candidate_id: A
-  display_name: Half-Profile Constrained Reconstruction
-  expected_behavior: Broaden p50-anchored edge halves while preserving the midpoint.
-  internal_id: s1_candidate_a_centered_profile_s118
-  known_failure: self-blocking activation
-  lineage: A/A2
-  private_files: []
-  provenance_hashes:
-  - path: src/retroz_s1/synthetic.py
-    sha256: e1b07e8d9e4714f1cddb828434fb334fe385fb153046d13d23390e59598a851a
-  public_files:
-  - src/retroz_s1/synthetic.py
-  real_image_reproducer_available: false
-  requires_oracle_labels: false
-  requires_private_data: false
-  runnable_on_user_image: false
-  scientific_interpretation: Eligibility must prove nonzero raster activation independently.
-  status: REJECTED_PRE_IMAGE
-  superseded_by: A2 terminal closure
-  synthetic_reproducer_available: true
-  version: public failure reproducer v1
-- actual_result: Dark-side movement was directionally useful but fold-unstable; bright
-    and total width moved in the wrong direction; native appearance was near-no-op.
-  candidate_id: B
-  display_name: Monotone Local Shoulder Remapping
-  expected_behavior: Redistribute local edge shoulders without moving protected cores.
-  internal_id: cursor_s1_candidate_b_mlsr_recipe
-  known_failure: wrong-direction transformation and fold instability
-  lineage: B
-  private_files:
-  - fixed TRAIN Smoke evidence
-  provenance_hashes:
-  - path: src/retroz_s1/candidates/b_runtime.py
-    sha256: 07bc85cc88937c9e67c8a6bf9578f82cc3444a1d3d5efeb5909026fe35c3d7ac
-  - path: src/retroz_s1/public_masks.py
-    sha256: 8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5
-  public_files:
-  - src/retroz_s1/candidates/b_runtime.py
-  real_image_reproducer_available: true
-  requires_oracle_labels: false
-  requires_private_data: false
-  runnable_on_user_image: true
-  scientific_interpretation: A directional local mechanism can move one metric without
-    solving the complete edge profile.
-  status: REAL_NEAR_NO_OP
-  superseded_by: null
-  synthetic_reproducer_available: true
-  version: clean-room v2
-- actual_result: Halo, angular bias, effect-floor failures, and invalid output measurement
-    blocked the lineage before real evaluation.
-  candidate_id: C
-  display_name: PSF and Continuous-Coverage Reconstruction
-  expected_behavior: Expand the bright recipient half through continuous coverage
-    or PSF reconstruction.
-  internal_id: s1_candidate_c_lineage
-  known_failure: raster halo and invalid measurement harness
-  lineage: C/C2/C3/C4
-  private_files: []
-  provenance_hashes:
-  - path: src/retroz_s1/synthetic.py
-    sha256: e1b07e8d9e4714f1cddb828434fb334fe385fb153046d13d23390e59598a851a
-  public_files:
-  - src/retroz_s1/synthetic.py
-  real_image_reproducer_available: false
-  requires_oracle_labels: false
-  requires_private_data: false
-  runnable_on_user_image: false
-  scientific_interpretation: Rendering and measurement must be independent and output-derived.
-  status: SYNTHETIC_REJECT
-  superseded_by: C4 terminal disposition
-  synthetic_reproducer_available: true
-  version: public failure reproducer v1
-- actual_result: Extensive synthetic contracts passed, but all 20 real arrays were
-    float-bit-identical to the baseline.
-  candidate_id: D3
-  display_name: Geometry-Guided Contour Reconstruction
-  expected_behavior: Reconstruct locally safe contour-cell coverage from source-fixed
-    geometry.
-  internal_id: s1_candidate_d3_r0_contour_cell_coverage_renderer_v1
-  known_failure: synthetic-real gap and exact real no-op
-  lineage: D/D2/D3
-  private_files:
-  - fixed TRAIN Smoke evidence
-  provenance_hashes:
-  - path: src/retroz_s1/geometry/contour_estimator.py
-    sha256: 4ce5cadb24d3878bd75a05333205534c64ae38ff4a585bf2ffa763251f222b85
-  - path: src/retroz_s1/candidates/d3_renderer.py
-    sha256: 70efa0a037db12e6e5baa3eea65ce446de8cdfd95b85091a0a1703105bc482d4
-  - path: src/retroz_s1/public_masks.py
-    sha256: 8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5
-  public_files:
-  - src/retroz_s1/geometry/contour_estimator.py
-  - src/retroz_s1/candidates/d3_renderer.py
-  real_image_reproducer_available: true
-  requires_oracle_labels: false
-  requires_private_data: false
-  runnable_on_user_image: true
-  scientific_interpretation: Local correctness does not imply activation on real distributions.
-  status: REAL_EXACT_NO_OP
-  superseded_by: null
-  synthetic_reproducer_available: true
-  version: E0-v2 plus R0-v3
-- actual_result: All branches were technically nonzero and perfectly local, yet 50/50
-    native blind panels showed no visible difference with high confidence.
-  candidate_id: ORACLE
-  display_name: Human-Verified Contour Feasibility Study
-  expected_behavior: Apply P1/P2/P3 inside manually verified contour tubes.
-  internal_id: s1_manual_ink_oracle_v3
-  known_failure: measurable but visually irrelevant change
-  lineage: Manual Oracle
-  private_files:
-  - protected V3 labels and contact sheets
-  provenance_hashes:
-  - path: src/retroz_s1/candidates/oracle_core.py
-    sha256: 0b2c61e106fb7083d8f2c96120bd8136b6d28d70e6fbefc7d27c5e3b51fa0331
-  - path: src/retroz_s1/candidates/oracle_renderer.py
-    sha256: 47345ae91bc498437ff1aa3b4856869db6a5a5424deb9685404dbe2325d6ef8f
-  - path: src/retroz_s1/candidates/oracle_exclusion.py
-    sha256: 9ee8f8f67d0282c51ebfd3a3d5d9bbe0038aa5650b23ba6558c26241cb77b53c
-  public_files:
-  - src/retroz_s1/candidates/oracle_core.py
-  - src/retroz_s1/candidates/oracle_renderer.py
-  real_image_reproducer_available: false
-  requires_oracle_labels: true
-  requires_private_data: false
-  runnable_on_user_image: true
-  scientific_interpretation: Perfect contour information did not rescue the evaluated
-    renderer family.
-  status: ORACLE_NEAR_NO_OP
-  superseded_by: null
-  synthetic_reproducer_available: true
-  version: public user-label renderer v1
-project: RetroZ S1 — Ink Profile Reconstruction
 schema_version: 1
-scientific_status: PROVISIONAL_NO_OP
-status_definition: No tested analytical, geometric, semantic, or manually guided S1
-  method demonstrated a clearly useful production-worthy visible effect under the
-  evaluated constraints.
+project: "RetroZ S1 — Ink Profile Reconstruction"
+scientific_status: "PROVISIONAL_NO_OP"
+status_definition: "No evaluated S1 method produced a clearly useful, production-worthy visible effect under the documented constraints."
+candidates:
+  -
+    candidate_id: "A"
+    display_name: "Half-profile constrained reconstruction"
+    lineage: "A/A2"
+    version: "1"
+    status: "REJECTED_PRE_IMAGE"
+    expected_behavior: "Broaden the two halves of an edge profile while keeping the midpoint fixed."
+    actual_result: "The eligibility mask produced no actionable samples, and a follow-up measurement route failed its accuracy check."
+    known_failure: "self-blocking activation"
+    scientific_interpretation: "Eligibility must demonstrate nonzero raster activation before image results can be interpreted."
+    superseded_by: null
+    runnable_on_user_image: false
+    synthetic_reproducer_available: true
+    real_image_reproducer_available: false
+    requires_oracle_labels: false
+    requires_private_data: false
+    public_files:
+      - "src/retroz_s1/synthetic.py"
+    private_files: []
+    provenance_hashes:
+      -
+        path: "src/retroz_s1/synthetic.py"
+        sha256: "6b3de2472be2c45bfe65fff4bee9c7ce3336b888fbdbbe223091071185f55aa4"
+  -
+    candidate_id: "B"
+    display_name: "Monotone local shoulder remapping"
+    lineage: "B"
+    version: "2"
+    status: "REAL_NEAR_NO_OP"
+    expected_behavior: "Redistribute local edge shoulders without moving protected cores."
+    actual_result: "The dark half moved in the intended direction on part of the evaluation, but fold stability was insufficient and the bright and total widths moved the wrong way. Native output remained close to identity."
+    known_failure: "wrong-direction transformation and fold instability"
+    scientific_interpretation: "Moving one local metric does not solve the complete edge profile."
+    superseded_by: null
+    runnable_on_user_image: true
+    synthetic_reproducer_available: true
+    real_image_reproducer_available: true
+    requires_oracle_labels: false
+    requires_private_data: false
+    public_files:
+      - "src/retroz_s1/candidates/b_runtime.py"
+      - "src/retroz_s1/public_masks.py"
+    private_files:
+      - "Aggregate results from the fixed real-frame smoke test"
+    provenance_hashes:
+      -
+        path: "src/retroz_s1/candidates/b_runtime.py"
+        sha256: "a034667b53a6928f2cdab29a596ad17d3d0dc37363e00f18e6e1264858d40d38"
+      -
+        path: "src/retroz_s1/public_masks.py"
+        sha256: "3aa2e1939f9522830ba5f8a097c6d108d68a4caf0d3faba188fa4c8276c29c6a"
+  -
+    candidate_id: "C"
+    display_name: "PSF and continuous-coverage reconstruction"
+    lineage: "C/C2/C3/C4"
+    version: "1"
+    status: "SYNTHETIC_REJECT"
+    expected_behavior: "Expand the recipient half through continuous coverage or PSF reconstruction."
+    actual_result: "Synthetic fixtures exposed halo and angular bias. One measurement route also inferred success from requested parameters instead of raster output."
+    known_failure: "raster halo and invalid measurement harness"
+    scientific_interpretation: "Rendering and measurement must remain independent and output-derived."
+    superseded_by: null
+    runnable_on_user_image: false
+    synthetic_reproducer_available: true
+    real_image_reproducer_available: false
+    requires_oracle_labels: false
+    requires_private_data: false
+    public_files:
+      - "src/retroz_s1/synthetic.py"
+    private_files: []
+    provenance_hashes:
+      -
+        path: "src/retroz_s1/synthetic.py"
+        sha256: "6b3de2472be2c45bfe65fff4bee9c7ce3336b888fbdbbe223091071185f55aa4"
+  -
+    candidate_id: "D3"
+    display_name: "Geometry-guided contour reconstruction"
+    lineage: "D/D2/D3"
+    version: "3"
+    status: "REAL_EXACT_NO_OP"
+    expected_behavior: "Reconstruct locally safe contour-cell coverage from source-fixed geometry."
+    actual_result: "The candidate passed its synthetic contracts, but all arrays in the fixed real-data smoke test were bit-identical to baseline."
+    known_failure: "synthetic-to-real activation gap and exact real no-op"
+    scientific_interpretation: "Correct behavior on controlled fixtures does not guarantee real-distribution activation."
+    superseded_by: null
+    runnable_on_user_image: true
+    synthetic_reproducer_available: true
+    real_image_reproducer_available: true
+    requires_oracle_labels: false
+    requires_private_data: false
+    public_files:
+      - "src/retroz_s1/geometry/contour_estimator.py"
+      - "src/retroz_s1/candidates/d3_renderer.py"
+      - "src/retroz_s1/public_masks.py"
+    private_files:
+      - "Aggregate results from the fixed real-frame smoke test"
+    provenance_hashes:
+      -
+        path: "src/retroz_s1/geometry/contour_estimator.py"
+        sha256: "4ce5cadb24d3878bd75a05333205534c64ae38ff4a585bf2ffa763251f222b85"
+      -
+        path: "src/retroz_s1/candidates/d3_renderer.py"
+        sha256: "70efa0a037db12e6e5baa3eea65ce446de8cdfd95b85091a0a1703105bc482d4"
+      -
+        path: "src/retroz_s1/public_masks.py"
+        sha256: "3aa2e1939f9522830ba5f8a097c6d108d68a4caf0d3faba188fa4c8276c29c6a"
+  -
+    candidate_id: "ORACLE"
+    display_name: "Human-verified contour feasibility study"
+    lineage: "Manual Oracle"
+    version: "1"
+    status: "ORACLE_NEAR_NO_OP"
+    expected_behavior: "Apply the tested renderers inside manually verified contour tubes."
+    actual_result: "Changes were local and nonzero, but native blind review found no visible difference in 50 out of 50 panels."
+    known_failure: "measurable but visually irrelevant change"
+    scientific_interpretation: "Better contour localization did not rescue the evaluated renderer family."
+    superseded_by: null
+    runnable_on_user_image: true
+    synthetic_reproducer_available: true
+    real_image_reproducer_available: false
+    requires_oracle_labels: true
+    requires_private_data: false
+    public_files:
+      - "src/retroz_s1/candidates/oracle_core.py"
+      - "src/retroz_s1/candidates/oracle_renderer.py"
+      - "src/retroz_s1/candidates/oracle_exclusion.py"
+    private_files:
+      - "Human-reviewed contour labels and native blind-review panels"
+    provenance_hashes:
+      -
+        path: "src/retroz_s1/candidates/oracle_core.py"
+        sha256: "0b2c61e106fb7083d8f2c96120bd8136b6d28d70e6fbefc7d27c5e3b51fa0331"
+      -
+        path: "src/retroz_s1/candidates/oracle_renderer.py"
+        sha256: "47345ae91bc498437ff1aa3b4856869db6a5a5424deb9685404dbe2325d6ef8f"
+      -
+        path: "src/retroz_s1/candidates/oracle_exclusion.py"
+        sha256: "9ee8f8f67d0282c51ebfd3a3d5d9bbe0038aa5650b23ba6558c26241cb77b53c"

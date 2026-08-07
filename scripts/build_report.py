@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the long-form Markdown and matching 35–70 page PDF report."""
+"""Build the canonical Markdown report and a matching deterministic PDF."""
 
 from __future__ import annotations
 
@@ -8,114 +8,337 @@ import textwrap
 from datetime import datetime, timezone
 from pathlib import Path
 
+import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / "reports"
+FIXED_TIME = datetime(2026, 8, 5, 12, 0, 0, tzinfo=timezone.utc)
 
-CHAPTERS = [
-    ("Executive Summary", "S1 asked whether a constrained local operator could shift modern raster ink profiles toward selected cel-era edge statistics without moving the perceived contour or damaging protected pixels. Every tested lineage failed to establish a production-worthy effect. The correct public conclusion is PROVISIONAL_NO_OP: bounded negative evidence, not a universal impossibility theorem."),
-    ("Problem Definition", "The target is a spatial ink-edge profile, not a complete retro-anime style. Color, grain, halation, scan tonality, compositing, and temporal cadence are deliberately outside S1. This isolation prevents an attractive global grade from hiding a failed contour mechanism."),
-    ("Research Question", "Can dark-side and bright-recipient half widths be changed while p50, plateaus, hard masks, backgrounds, and perceptual clarity remain stable? The answer is evaluated per frame, then episode, then fold, rather than by pooled pixels."),
-    ("Scope and Non-Goals", "The study does not redraw characters, infer animation semantics, learn a neural style model, or claim to reproduce every production era. It tests deterministic operators under fixed safety constraints and reports when those constraints leave no useful activation."),
-    ("Terminology", "An edge-spread function describes how brightness changes across a contour. p10, p50, and p90 are positions where that transition reaches 10, 50, and 90 percent. The ink core is the darkest center; the recipient side is the brighter color receiving the contour transition."),
-    ("Data Governance", "Protected source frames were used only in the private historical environment. This public package contains no frames, crops, contact sheets, videos, private labels, or frame-derived visuals. All public images are procedurally generated."),
-    ("Five-Fold Evaluation", "Episodes were separated into five folds. Measurements were aggregated Frame to Episode to Fold so an episode with many eligible pixels could not dominate the conclusion. Fold stability was required before a candidate could advance."),
-    ("Fail-Closed Methodology", "Invalid input, missing evidence, provenance drift, unsafe passthrough, and incomplete predecessor reports stop evaluation. A technical pass is not an aesthetic pass, and a synthetic pass is not evidence of real activation."),
-    ("Safety Contracts", "Hard masks, midpoint stability, halo limits, clipping, detail gradients, backgrounds, and dependency hashes were preregistered. The evaluator treated candidate-reported safety masks as insufficient and independently reconstructed protected regions."),
-    ("Candidate Registry", "Every lineage has an explicit identifier, status, expected behavior, actual result, known failure, provenance notes, and public capability. Rejected candidates require explicit command-line acknowledgement."),
-    ("Candidate A", "A attempted centered half-profile reconstruction. Its eligibility proxy collapsed below the activation threshold before real-image execution. A2 then exposed invalid measurement accuracy. The lineage is retained as a synthetic self-blocking failure reproduction."),
-    ("Candidate B", "B used monotone local shoulder remapping. A fixed real TRAIN Smoke moved the dark half in a useful direction, but the bright and total widths moved incorrectly, fold stability failed, and native output was near-no-op. It is an honest runnable research artifact, not a recommendation."),
-    ("Candidate C", "C explored PSF and continuous-coverage reconstruction. The lineage encountered halo, angular bias, effect-floor failures, and a C3 harness that inferred outcomes from requested parameters instead of independently measuring raster output. C4 did not reach valid fixtures."),
-    ("Candidate D3", "D3 combined a source-fixed contour estimator with subpixel cell coverage. Its synthetic contracts were extensive and green, yet the real fixed Smoke returned twenty arrays bit-identical to baseline. This is a clean demonstration of the synthetic-to-real activation gap."),
-    ("Manual Oracle", "The Oracle replaced uncertain localization with human-verified contour segments. Three methods and several tiers produced technically nonzero, spatially local changes. A frozen native blind review nevertheless returned 50 of 50 judgments as no visible difference with high confidence."),
-    ("Oracle Interpretation", "The Oracle result weakens the hypothesis that localization alone caused earlier no-ops. Under the tested target widths and renderer family, even perfect labels did not create a useful visible transformation. It does not rule out learned redraw or materially different spatial objectives."),
-    ("Quantitative Summary", "B closed only part of one half-side objective and failed others. D3 closed none on real Smoke because it did not activate. Oracle branches were nonzero but remained perceptually invisible. No lineage earned a valid Full PASS."),
-    ("Qualitative Summary", "Native review emphasized contour clarity, backgrounds, and perceptual visibility. Subtle numeric movement was not treated as success when a careful observer could not reliably see an effect."),
-    ("Failure Atlas", "Failures are grouped as self-blocking activation, wrong-direction movement, halo or angular bias, invalid output measurement, synthetic-real activation gap, and measurable-but-irrelevant change. Each category points to a different corrective research action."),
-    ("What Worked", "Preregistration, immutable parameters, independent measurement, sandboxing, dependency closure, provenance, synthetic fixtures, hard-mask passthrough, and honest stop decisions all worked. These assets are reusable beyond S1."),
-    ("What Did Not Work", "More parameter scaling inside the same architecture did not solve the core problem. Candidate families were closed when their failure mode was structural, when effect strength remained near zero, or when safety gates consumed all useful headroom."),
-    ("Negative Results Value", "Publishing rigorous negative results prevents repeated dead ends and shows how attractive synthetic behavior can disappear on real distributions. The repository makes those conclusions inspectable without exposing protected media."),
-    ("Reproducibility Model", "Normal public operation is synthetic-only. Frozen clean-room modules are copied with provenance, public mask approximations are explicitly labeled, and every generated image receives a sidecar. Exact private replay requires separately held source data and is not represented as public reproducibility."),
-    ("CLI Design", "The CLI lists and inspects candidates, renders B, reproduces A and C failures, compares B and D3, and renders Oracle behavior from user-supplied labels. Historical candidates fail closed unless the explicit research acknowledgement flag is present."),
-    ("Synthetic Demonstrations", "Procedural shapes expose edges, junctions, colored plateaus, and hard boundaries without borrowing protected imagery. They are useful for software validation, not for claiming historical visual fidelity."),
-    ("Public Asset Policy", "Only source code, structured summaries, procedural fixtures, diagrams, plots, and synthetic renders are public. Protected images and coordinates remain physically separate in a bundle marked DO NOT UPLOAD."),
-    ("Security and Privacy", "A recursive scan rejects local usernames, absolute private roots, session identifiers, attachment identifiers, credentials, symlinks, caches, and unexpected media. Generic security terms are classified rather than blindly deleted."),
-    ("Dependency and License Review", "Runtime dependencies are NumPy and Pillow; testing and report building add pytest, PyYAML, Matplotlib, and optionally MkDocs. A final repository license is intentionally not selected until ownership and third-party review is complete."),
-    ("Clean-Room Verification", "The package is copied to an isolated directory and exercised without the historical tree. Imports, registry, CLI, synthetic generation, tests, report generation, documentation build, and manifests must work from that copy."),
-    ("Limitations", "The evidence is source-bounded, metric-bounded, architecture-bounded, and reviewer-bounded. Public masks approximate rather than replicate private M0 maps. Oracle labels are not public. No result should be generalized to every animation pipeline."),
-    ("Future S1 Research", "A future S1 attempt should require materially new evidence: learned contour semantics, vector reconstruction, temporal information, or a different perceptual target. Repeating strength searches on closed families is not justified."),
-    ("S2 to S6 Reuse", "The evaluator, provenance model, runtime isolation, synthetic harness patterns, and decision ledger can support later surface texture, chromatic registration, grain, halation, and residual diagnostics. S1 formulas do not transfer automatically."),
-    ("Portfolio Interpretation", "The strongest engineering signal is not a dramatic filter output; it is disciplined hypothesis control, clean-room packaging, robust failure handling, and a defensible decision to stop. The project demonstrates research maturity under ambiguous aesthetic goals."),
-    ("How to Read the Repository", "Start with README and STATUS, inspect the candidate matrix and failure atlas, run the synthetic demo, then read the methodology and report. Private historical evidence is summarized but never masquerades as publicly replayable data."),
-    ("Conclusion", "S1 reached a provisional no-op. The tested deterministic contour operators did not justify production activation, and the Manual Oracle supplied no visible rescue. The reusable outcome is a transparent experimental system and a sharply narrowed search space."),
-    ("Appendix A: Commands", "Use make test, make synthetic-demo, make report, make docs-build, make verify, and make clean-room-test. Every rejected renderer requires --allow-rejected-research-candidate."),
-    ("Appendix B: Status Vocabulary", "REJECTED_PRE_IMAGE means no valid real execution. SYNTHETIC_REJECT means the candidate failed before real evidence. REAL_NEAR_NO_OP and REAL_EXACT_NO_OP distinguish tiny or zero activation. ORACLE_NEAR_NO_OP records technically nonzero but perceptually irrelevant output."),
-    ("Appendix C: Claim Boundary", "The package claims only that no tested S1 candidate demonstrated a clearly useful production-worthy effect under the evaluated constraints. It does not claim that a 1990s visual style is impossible, or that other spatial architectures cannot work."),
+CANDIDATES = [
+    (
+        "A",
+        "Half-profile constrained reconstruction",
+        "REJECTED_PRE_IMAGE",
+        "Activation and measurement checks failed before a valid real-image run.",
+    ),
+    (
+        "B",
+        "Monotone local shoulder remapping",
+        "REAL_NEAR_NO_OP",
+        "Limited dark-side movement; bright and total directions failed and native output remained near identity.",
+    ),
+    (
+        "C",
+        "PSF and continuous coverage",
+        "SYNTHETIC_REJECT",
+        "Halo, angular bias and an invalid output-measurement harness closed the branch.",
+    ),
+    (
+        "D3",
+        "Geometry-guided contour reconstruction",
+        "REAL_EXACT_NO_OP",
+        "Extensive synthetic success did not transfer; the fixed real-data smoke output was identical to baseline.",
+    ),
+    (
+        "Oracle",
+        "Human-labelled feasibility study",
+        "ORACLE_NEAR_NO_OP",
+        "Local nonzero changes were not visible in 50/50 native blind panels.",
+    ),
 ]
 
-# These phase chapters are required because they connect the candidate results
-# to the infrastructure and recovery decisions that made the final Oracle
-# conclusion interpretable.  They add substance rather than padding.
-CHAPTERS.extend([
-    ("RetroZ Lab Overview", "RetroZ Lab is a staged investigation of deterministic, offline visual transformations. S1 isolates spatial ink profiles; later stages address surface texture, color registration, grain, optical halation, and scan tonality. The separation makes each claim falsifiable and keeps one attractive effect from masking another stage's failure."),
-    ("Visual and Measured Motivation", "Modern digital line work often presents narrower, cleaner transitions than selected cel-era references. The initial expectation was that this gap could be represented through edge-spread widths and reconstructed locally. The experiments showed that a measurable gap does not guarantee a useful safe operator."),
-    ("Target Edge Characteristics", "The preregistered target concerned asymmetric dark and bright half-widths around a stable p50. It did not prescribe blur. Plateau colors, junctions, end caps, background regions, and hard masks constrained any legal transformation."),
-    ("Dark-Side, Bright-Side, Total Width, and p50", "Dark Side is the distance from p10 to p50; Bright Side is p50 to p90; total width is p10 to p90. p50 approximates perceived contour location. An operator that improves only one half, narrows another, or shifts p50 does not solve the registered objective."),
-    ("Common Evaluator", "The Common Evaluator enforced process isolation, worker boundaries, runtime attestation, wheel RECORD validation, hash binding, independent hard-mask reconstruction, provenance, and Frame to Episode to Fold aggregation. Bubblewrap tests verified the intended execution boundary before real Smokes."),
-    ("M1 Input Recovery", "M1 recovered the precise input and measurement contract after earlier ambiguity. Its role was evidentiary: it bound existing reports and support counts without inventing missing values or changing the target."),
-    ("Semantic Classification", "Semantic investigations progressed from a conservative S0 baseline through an S1 model and an S2 Oracle-style diagnostic. A blind semantic audit showed that class labels alone could not guarantee useful contour transformation, motivating the final manual Ink Oracle."),
-    ("E1–E4 Final Recovery", "The E1 through E4 recovery sequence tested whether measurement, eligibility, or semantic routing concealed a viable effect. Each step was denial-only: it could disqualify unsupported claims but could not manufacture a PASS. The sequence narrowed the remaining uncertainty to manual contour localization and renderer utility."),
-    ("Denial-Only Evaluator", "The final E evaluator was intentionally incapable of promoting a candidate. It checked integrity, support, and contradiction, and could only preserve or deny an existing claim. This prevented infrastructure changes from being misread as aesthetic evidence."),
-    ("Expectation Versus Reality", "The project expected broader reference edges to imply a tractable local reconstruction. In reality, A did not activate, B moved an incomplete subset of metrics, C produced spatial artifacts or invalid evidence, D3 was inactive on real data, and the Oracle was technically nonzero but invisible."),
-    ("Potential Vision-Model Architecture", "A materially new approach could use learned contour semantics, vectorized line representations, temporal consistency, and perceptual supervision. Such a model must still preserve hard regions, expose uncertainty, run offline, and be evaluated independently. It is future work, not evidence that S1 succeeded."),
-    ("Public Reproduction Guide", "Install without private dependencies, list the registry, run synthetic demonstrations, reproduce A and C failures, render B or D3 only with the explicit research flag, and supply your own labels for Oracle rendering. Public masks are approximations and cannot reproduce exact private experiments."),
-    ("Asset and Licensing Boundaries", "Protected animation frames, private labels, visual packs, and raw sessions are excluded. The repository contains clean-room code and generated assets, but a maintainer must complete ownership review and select compatible licenses before publication."),
-    ("Chronological Appendix", "The public chronology moves from target measurement to A, B, C, D3, recovery diagnostics, manual labels, frozen blind review, and packaging. Superseded statements remain identified as historical expectations rather than silently rewritten."),
-    ("Hash and Source Appendix", "Public manifests bind source, evidence, report, and release artifacts. Sanitized source identifiers appear publicly; exact workstation paths and protected provenance remain in the physically separate private bundle."),
-])
+SECTIONS = [
+    (
+        "Executive summary",
+        [
+            "RetroZ S1 tested whether a constrained local raster operator could move selected modern ink-edge profiles toward broader, asymmetric reference characteristics without shifting the perceived contour or damaging protected pixels. The stage was deliberately isolated from color grading, grain, halation, scan texture and temporal effects.",
+            "Five lineages were evaluated: analytical half-profile reconstruction, monotone shoulder remapping, PSF/coverage reconstruction, geometry-guided contour reconstruction and a final human-labelled Oracle. None produced a clearly visible, production-worthy improvement. The practical production decision is therefore identity/bypass, represented by the machine-readable status PROVISIONAL_NO_OP.",
+            "This is a bounded negative result. It applies to the evaluated data, metrics, safety gates, operator families and review protocol. It does not rule out vector reconstruction, learned contour semantics, temporal models or a different perceptual target.",
+        ],
+    ),
+    (
+        "Problem and scope",
+        [
+            "The target was the spatial transition across an ink contour, not an entire retro-animation style. The main measurements were p10, p50 and p90 positions on an edge-spread profile. Dark half-width was defined as p10 to p50, bright half-width as p50 to p90 and total width as p10 to p90.",
+            "p50 served as a practical proxy for perceived contour location. A candidate was not allowed to broaden an edge by moving the contour, blurring the core, damaging color plateaus or introducing halo outside the intended support. Junctions, end caps, backgrounds and hard masks were treated as protected contexts.",
+            "Success required activation, technical safety and visible utility. A nonzero pixel delta or a favorable synthetic metric was not enough. This distinction became central: several branches were technically active but not useful, while another passed synthetic contracts and was exactly inactive on the fixed real-data smoke test.",
+        ],
+    ),
+    (
+        "Evidence and asset boundary",
+        [
+            "Historical real-data experiments used protected source frames in a private environment. The public repository contains no frames, crops, contact sheets, videos, private contour coordinates or exact private M0 masks. Public visuals are generated from original procedural fixtures.",
+            "The package can reproduce its own tests, synthetic failures, generated figures, documentation, report and integrity manifests. Candidate B and D3 can also be exercised on user-owned images using documented public mask approximations. Those runs expose the operator but are not described as exact historical replay.",
+            "Private findings are retained as bounded summaries and provenance records. This preserves the decision history without implying that unavailable source material has been turned into an open dataset.",
+        ],
+    ),
+    (
+        "Evaluation protocol",
+        [
+            "Measurements were aggregated from frame to episode to fold across five separated folds. This prevented episodes with more eligible pixels from dominating the result and made directional stability part of the advancement decision.",
+            "Candidates had to pass deterministic-output and non-mutation checks, activation checks, midpoint and halo limits, protected-region passthrough and fold-level direction gates. Missing evidence, provenance drift or an invalid measurement path stopped the branch rather than being interpreted optimistically.",
+            "Synthetic fixtures covered controlled angles, junctions, end caps and color plateaus. They were used to validate implementation contracts. Real-data activation and native visual review remained separate requirements because synthetic behavior did not reliably predict real-image behavior.",
+        ],
+    ),
+    (
+        "Candidate results",
+        [
+            "Candidate A attempted centered half-profile reconstruction. Its eligibility proxy removed nearly all actionable support before a valid real-image test, and a follow-up measurement route failed its own accuracy contract. The honest public interface is therefore a synthetic self-blocking reproducer rather than an arbitrary-image renderer.",
+            "Candidate B used a frozen monotone local shoulder remap. On the fixed real-data smoke it supplied limited directional evidence on the dark half, but the bright and total widths did not move as required, fold stability was insufficient and native output stayed close to identity. It remains runnable only as a clearly labelled historical research artifact.",
+            "Candidate C explored PSF and continuous-coverage reconstruction. Synthetic results exposed halo and angular bias. One harness also inferred success from requested parameters instead of independently measuring raster output, which invalidated that evidence. The branch was closed before a valid real-image claim.",
+            "Candidate D3 combined source-fixed contour estimation with subpixel cell coverage. Its synthetic contracts were extensive and successful, but the fixed real-data smoke returned outputs identical to baseline. D3 is the clearest example of the synthetic-to-real activation gap.",
+            "The final Oracle replaced automatic localization with human-verified contour segments. Three methods and multiple tiers produced local, technically nonzero changes. A frozen native blind review nevertheless returned 50 out of 50 judgements of no visible difference, weakening the idea that localization alone explained the earlier no-ops.",
+        ],
+    ),
+    (
+        "Cross-candidate findings",
+        [
+            "The branches did not share one simple failure. A was self-blocking, B moved an incomplete subset of the target, C exposed spatial artifacts and invalid measurement, D3 failed to activate on real samples and the Oracle changed pixels without creating visible utility.",
+            "This matters for future work. Increasing strength cannot repair an invalid harness, an angle-dependent renderer or a target that remains invisible even with perfect labels. Each failure class points to a different research change.",
+            "The common lesson is that local correctness does not imply useful system behavior. Eligibility, independent measurement, real-distribution activation and native perception have to remain separate gates.",
+        ],
+    ),
+    (
+        "Engineering controls",
+        [
+            "The public package fails closed. Rejected candidates require an explicit command-line acknowledgement. Candidate A and C are excluded from normal image rendering and exposed only through synthetic failure reproduction. Output images receive JSON provenance sidecars.",
+            "Candidate registry entries record status, expected behavior, actual result, known failure, public capability and provenance hashes. Repository-level and packaged registry copies are tested for equality. Generated source and evidence manifests use SHA-256 and are refreshed after provenance updates.",
+            "CI installs the package through its declared metadata, runs tests across supported Python versions, smoke-tests the console entry point, builds wheel and source distributions, regenerates public artifacts and fails if committed generated files are stale.",
+        ],
+    ),
+    (
+        "Interpretation of the Oracle",
+        [
+            "The Oracle was designed to answer a specific question: were previous candidates failing mainly because they could not find the correct contour support? Human-labelled segments removed that uncertainty for the tested locations.",
+            "The renderer then produced nonzero, local changes, so the experiment did not fail because of an empty mask. The native blind panels still showed no visible difference. Under the tested widths and renderer family, better localization did not rescue useful perception.",
+            "The result does not establish a universal perceptual ceiling. It does justify closing the tested local renderer family and requiring a materially different representation or objective before reopening S1.",
+        ],
+    ),
+    (
+        "Limitations and future work",
+        [
+            "The real-data evidence cannot be independently replayed from the public repository because protected source frames and private labels are not distributed. The public package is reproducible at the code, synthetic-evidence and generated-artifact level.",
+            "Edge-spread widths do not capture every aspect of drawn line style. They omit semantics, authorship, temporal consistency and some display-dependent perception. Human review was bounded to the frozen panels and conditions used for the decision.",
+            "A future attempt should not repeat strength searches inside the closed families. Plausible new directions include vector contour reconstruction, learned semantic support, temporal information or a different perceptual target with independent review. Those are proposals, not evidence that S1 succeeded.",
+        ],
+    ),
+    (
+        "Conclusion",
+        [
+            "RetroZ S1 did not produce a production filter. It did produce a defensible answer: the evaluated deterministic contour operators did not justify activation, and the final human-labelled Oracle did not reveal a useful visible effect.",
+            "The retained value is an inspectable research system and a narrower search space. Production should remain identity/bypass until materially new evidence changes that decision.",
+        ],
+    ),
+]
 
 
 def markdown() -> str:
-    lines = ["# RetroZ S1: Controlled Ink-Profile Reconstruction", "", "**Design, Evaluation, and Practical Limits of Analytical Line Transformation for Cel Animation**", "", "**Scientific status: PROVISIONAL_NO_OP**", "", "This report is generated from a public-safe, synthetic-only repository. No protected source imagery is included.", "", "## Table of Contents", ""]
-    for index, (title, _) in enumerate(CHAPTERS, 1):
-        lines.append(f"{index}. [{title}](#{title.lower().replace(' ', '-').replace(':', '')})")
-    lines.extend(["", "## Phase Summary", "", "| Phase | Expectation | Evidence Behind Expectation | Actual Result | Explanation | Reusable Lesson |", "|---|---|---|---|---|---|", "| A | Centered reconstruction activates safely | Stable aggregate edge gap | Rejected before real images | Eligibility and measurement failed | Independently prove activation |", "| B | Monotone remapping closes both halves | Synthetic direction and historical diagnostic | Real near-no-op; incomplete direction | One local transform cannot satisfy the full profile | Preserve honest runnable negative evidence |", "| C | Continuous coverage fixes the bright side | Subpixel model | Synthetic reject | Halo, angular bias, invalid harness | Measure rendered output independently |", "| D3 | Source-fixed geometry activates safely | Extensive synthetic contracts | Real exact no-op | Synthetic support did not match real eligibility | Validate activation on real distributions |", "| Oracle | Perfect labels reveal renderer utility | Human-verified contours | 50/50 no visible difference | Localization was not the only bottleneck | Stop closed renderer families |"])
-    for index, (title, body) in enumerate(CHAPTERS, 1):
-        lines.extend(["", f"## {index}. {title}", "", body, "", f"**S1 decision context:** This chapter is consistent with `PROVISIONAL_NO_OP`; no production activation is implied."])
-    lines.extend(["", "---", "", "Generated reproducibly by `scripts/build_report.py`."])
+    lines = [
+        "# RetroZ S1: Ink Profile Reconstruction",
+        "",
+        "**Evaluation of constrained local contour operators and their practical limits**",
+        "",
+        "**Author:** Saif Shafique",
+        "**Version:** 0.1.0",
+        "**Scientific status:** `PROVISIONAL_NO_OP`",
+        "",
+        "> The public report contains no protected source imagery. Visuals are generated from synthetic fixtures.",
+        "",
+        "## Candidate summary",
+        "",
+        "| ID | Approach | Status | Result |",
+        "|---|---|---|---|",
+    ]
+    for candidate_id, approach, status, result in CANDIDATES:
+        lines.append(f"| {candidate_id} | {approach} | `{status}` | {result} |")
+
+    lines.extend(["", "## Contents", ""])
+    for index, (title, _) in enumerate(SECTIONS, 1):
+        anchor = title.lower().replace(" ", "-")
+        lines.append(f"{index}. [{title}](#{index}-{anchor})")
+
+    for index, (title, paragraphs) in enumerate(SECTIONS, 1):
+        lines.extend(["", f"## {index}. {title}", ""])
+        for paragraph in paragraphs:
+            lines.extend([paragraph, ""])
+
+    lines.extend(
+        [
+            "## Appendix A: public commands",
+            "",
+            "```bash",
+            "make test",
+            "make synthetic-demo",
+            "make report",
+            "make docs-build",
+            "make verify",
+            "```",
+            "",
+            "Rejected or historical render paths require `--allow-rejected-research-candidate`.",
+            "",
+            "## Appendix B: claim boundary",
+            "",
+            "The package claims only that no tested S1 candidate demonstrated a clearly useful, production-worthy effect under the evaluated constraints. It does not claim that a retro line style is impossible or that materially different architectures cannot work.",
+            "",
+            "---",
+            "",
+            "Generated by `scripts/build_report.py`.",
+        ]
+    )
     return "\n".join(lines) + "\n"
 
 
-def add_text_page(pdf: PdfPages, title: str, body: str, footer: str) -> None:
-    fig = plt.figure(figsize=(8.27, 11.69), facecolor="#f7f4ed")
-    fig.text(0.09, 0.92, title, fontsize=20, fontweight="bold", color="#132238")
-    wrapped = "\n\n".join(textwrap.fill(p, width=83) for p in body.split("\n\n"))
-    fig.text(0.09, 0.84, wrapped, fontsize=11, va="top", linespacing=1.55, color="#243447")
-    fig.text(0.09, 0.045, footer, fontsize=8, color="#607080")
-    plt.axis("off"); pdf.savefig(fig, bbox_inches="tight"); plt.close(fig)
+def wrap_paragraphs(paragraphs: list[str], width: int = 92) -> list[str]:
+    lines: list[str] = []
+    for paragraph in paragraphs:
+        lines.extend(textwrap.wrap(paragraph, width=width))
+        lines.append("")
+    return lines
+
+
+def add_text_pages(
+    pdf: PdfPages,
+    title: str,
+    paragraphs: list[str],
+    page_number: int,
+) -> int:
+    lines = wrap_paragraphs(paragraphs)
+    page_capacity = 38
+    chunks = [lines[index : index + page_capacity] for index in range(0, len(lines), page_capacity)]
+    for part, chunk in enumerate(chunks, 1):
+        fig = plt.figure(figsize=(8.27, 11.69), facecolor="white")
+        shown_title = title if len(chunks) == 1 else f"{title} ({part}/{len(chunks)})"
+        fig.text(0.09, 0.92, shown_title, fontsize=18, fontweight="bold", color="#162033")
+        fig.text(
+            0.09,
+            0.85,
+            "\n".join(chunk),
+            fontsize=10.4,
+            va="top",
+            family="DejaVu Sans",
+            linespacing=1.35,
+            color="#253247",
+        )
+        fig.text(0.09, 0.04, "RetroZ S1 · public-safe report", fontsize=8, color="#687386")
+        fig.text(0.91, 0.04, str(page_number), fontsize=8, ha="right", color="#687386")
+        plt.axis("off")
+        pdf.savefig(fig, bbox_inches="tight")
+        plt.close(fig)
+        page_number += 1
+    return page_number
+
+
+def add_candidate_table(pdf: PdfPages, page_number: int) -> int:
+    fig = plt.figure(figsize=(8.27, 11.69), facecolor="white")
+    fig.text(0.09, 0.92, "Candidate summary", fontsize=18, fontweight="bold", color="#162033")
+    ax = fig.add_axes([0.08, 0.18, 0.84, 0.64])
+    ax.axis("off")
+    cell_text = [[row[0], row[2], textwrap.fill(row[3], 42)] for row in CANDIDATES]
+    table = ax.table(
+        cellText=cell_text,
+        colLabels=["ID", "Status", "Result"],
+        colWidths=[0.10, 0.25, 0.65],
+        cellLoc="left",
+        loc="upper left",
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    table.scale(1, 2.5)
+    fig.text(0.09, 0.04, "RetroZ S1 · public-safe report", fontsize=8, color="#687386")
+    fig.text(0.91, 0.04, str(page_number), fontsize=8, ha="right", color="#687386")
+    pdf.savefig(fig, bbox_inches="tight")
+    plt.close(fig)
+    return page_number + 1
+
+
+def add_image_page(pdf: PdfPages, title: str, image_path: Path, page_number: int) -> int:
+    if not image_path.is_file():
+        return page_number
+    image = mpimg.imread(image_path)
+    fig = plt.figure(figsize=(11.69, 8.27), facecolor="white")
+    fig.text(0.06, 0.93, title, fontsize=18, fontweight="bold", color="#162033")
+    ax = fig.add_axes([0.05, 0.12, 0.90, 0.74])
+    ax.imshow(image)
+    ax.axis("off")
+    fig.text(0.06, 0.04, "Synthetic fixture; no protected source imagery", fontsize=8, color="#687386")
+    fig.text(0.94, 0.04, str(page_number), fontsize=8, ha="right", color="#687386")
+    pdf.savefig(fig, bbox_inches="tight")
+    plt.close(fig)
+    return page_number + 1
 
 
 def main() -> None:
     REPORTS.mkdir(parents=True, exist_ok=True)
-    md = REPORTS / "RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md"
-    md.write_text(markdown(), encoding="utf-8")
+    markdown_path = REPORTS / "RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md"
     pdf_path = REPORTS / "RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf"
-    fixed_time=datetime(2026,8,5,12,0,0,tzinfo=timezone.utc)
-    metadata={"Title":"RetroZ S1: Controlled Ink-Profile Reconstruction","Author":"RetroZ Lab contributor","Subject":"Design, evaluation, and practical limits of analytical line transformation for cel animation","Keywords":"reproducible research, ink profiles, negative results","CreationDate":fixed_time,"ModDate":fixed_time}
+    markdown_path.write_text(markdown(), encoding="utf-8")
+
+    metadata = {
+        "Title": "RetroZ S1: Ink Profile Reconstruction",
+        "Author": "Saif Shafique",
+        "Subject": "Constrained contour reconstruction and negative-results analysis",
+        "Keywords": "computer vision, image processing, reproducible research, negative results",
+        "CreationDate": FIXED_TIME,
+        "ModDate": FIXED_TIME,
+    }
+
+    page_number = 1
     with PdfPages(pdf_path, metadata=metadata) as pdf:
-        add_text_page(pdf, "RetroZ S1", "CONTROLLED INK-PROFILE RECONSTRUCTION\n\nDesign, Evaluation, and Practical Limits of Analytical Line Transformation for Cel Animation\n\nScientific status: PROVISIONAL_NO_OP", "Public-safe report · synthetic visuals only")
-        add_text_page(pdf, "Executive map", "Question → preregistration → candidates A/B/C/D3 → Manual Oracle → frozen blind review → provisional no-op.\n\nThe report separates numerical movement, technical safety, and useful visible effect.", "How to read this report")
-        toc = "\n".join(f"{i:02d}  {title}" for i, (title, _) in enumerate(CHAPTERS, 1))
-        add_text_page(pdf, "Contents I", "\n".join(toc.splitlines()[:20]), "Table of contents")
-        add_text_page(pdf, "Contents II", "\n".join(toc.splitlines()[20:]), "Table of contents")
-        for index, (title, body) in enumerate(CHAPTERS, 1):
-            add_text_page(pdf, f"{index:02d} · {title}", body, f"RetroZ S1 · PROVISIONAL_NO_OP · chapter {index}/{len(CHAPTERS)}")
-    meta = {"markdown": md.name, "pdf": pdf_path.name, "pdf_pages": len(CHAPTERS) + 4, "scientific_status": "PROVISIONAL_NO_OP", "protected_assets": 0}
-    (REPORTS / "REPORT_BUILD_METADATA.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(meta, indent=2))
+        fig = plt.figure(figsize=(8.27, 11.69), facecolor="white")
+        fig.text(0.10, 0.78, "RetroZ S1", fontsize=34, fontweight="bold", color="#162033")
+        fig.text(0.10, 0.70, "INK PROFILE RECONSTRUCTION", fontsize=16, color="#266a76")
+        fig.text(
+            0.10,
+            0.58,
+            "Evaluation of constrained local contour operators\nand their practical limits",
+            fontsize=17,
+            linespacing=1.5,
+            color="#253247",
+        )
+        fig.text(0.10, 0.40, "Scientific status: PROVISIONAL_NO_OP", fontsize=13, color="#8a5a00")
+        fig.text(0.10, 0.32, "Saif Shafique · version 0.1.0", fontsize=11, color="#687386")
+        fig.text(0.10, 0.08, "Public-safe report · synthetic visuals only", fontsize=9, color="#687386")
+        plt.axis("off")
+        pdf.savefig(fig, bbox_inches="tight")
+        plt.close(fig)
+        page_number += 1
+
+        page_number = add_candidate_table(pdf, page_number)
+        for title, paragraphs in SECTIONS:
+            page_number = add_text_pages(pdf, title, paragraphs, page_number)
+            if title == "Candidate results":
+                page_number = add_image_page(
+                    pdf,
+                    "Synthetic candidate comparison",
+                    ROOT / "docs/assets/generated/candidate-comparison.png",
+                    page_number,
+                )
+            if title == "Interpretation of the Oracle":
+                page_number = add_image_page(
+                    pdf,
+                    "Oracle output and amplified delta",
+                    ROOT / "docs/assets/generated/oracle-delta.png",
+                    page_number,
+                )
+
+    page_count = page_number - 1
+    build_metadata = {
+        "markdown": markdown_path.name,
+        "pdf": pdf_path.name,
+        "pdf_pages": page_count,
+        "author": "Saif Shafique",
+        "version": "0.1.0",
+        "scientific_status": "PROVISIONAL_NO_OP",
+        "protected_assets": 0,
+    }
+    (REPORTS / "REPORT_BUILD_METADATA.json").write_text(
+        json.dumps(build_metadata, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(json.dumps(build_metadata, indent=2))
 
 
 if __name__ == "__main__":

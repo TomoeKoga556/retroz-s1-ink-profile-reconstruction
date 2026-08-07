@@ -10,10 +10,9 @@
     "examples/synthetic/failure_c/psf_output.png",
     "examples/synthetic/failure_c/source.png",
     "examples/synthetic/oracle_p1_r0.png",
-    "examples/synthetic/original_fixture.png",
-    "github-social-preview.png"
+    "examples/synthetic/original_fixture.png"
   ],
   "protected_images": 0,
-  "privacy_matches": [],
+  "path_matches": [],
   "symlinks": []
 }

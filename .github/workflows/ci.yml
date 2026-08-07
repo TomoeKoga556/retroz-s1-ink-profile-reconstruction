@@ -1,20 +1,80 @@
-name: public-safe-ci
+name: ci
+
 on:
   push:
   pull_request:
+
+permissions:
+  contents: read
+
 jobs:
-  test:
+  tests:
+    name: tests / Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
-      - run: python -m pip install numpy==2.2.6 Pillow==11.2.1 pytest==9.0.2 PyYAML==6.0.2 matplotlib==3.10.3
-      - run: PYTHONPATH=src python -m pytest -q
-      - run: PYTHONPATH=src python scripts/generate_synthetic_demo.py
-      - run: PYTHONPATH=src python scripts/build_report.py
-      - run: PYTHONPATH=src python scripts/build_docs.py
-      - run: PYTHONPATH=src python scripts/validate_documents.py
-      - run: PYTHONPATH=src python scripts/build_manifests.py
-      - run: PYTHONPATH=src python scripts/verify_repository.py
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install package and development tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Static checks
+        run: python -m ruff check .
+
+      - name: Test installed package
+        run: python -m pytest
+
+      - name: Smoke-test console entry point
+        run: |
+          retroz-s1 --version
+          retroz-s1 list-candidates
+
+      - name: Build wheel and source distribution
+        run: python -m build
+
+  generated-artifacts:
+    name: generated artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install package, tests and documentation tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev,reproduce]"
+
+      - name: Regenerate public artifacts
+        run: |
+          python scripts/generate_synthetic_demo.py
+          python scripts/build_report.py
+          python scripts/build_docs.py
+          python scripts/update_registry_provenance.py
+          python scripts/validate_documents.py
+          python scripts/build_manifests.py
+          python scripts/verify_repository.py
+
+      - name: Check committed generated files
+        run: git diff --exit-code
