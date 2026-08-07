@@ -97,16 +97,17 @@ def synthetic_oracle_labels(size: int = 256) -> dict[str, object]:
 
 
 def _font(size: int, *, bold: bool = False) -> ImageFont.ImageFont:
-    candidates = (
-        "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf",
-        "LiberationSans-Bold.ttf" if bold else "LiberationSans-Regular.ttf",
-    )
-    for name in candidates:
+    filename = "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf"
+    try:
+        import matplotlib
+
+        font_path = Path(matplotlib.get_data_path()) / "fonts" / "ttf" / filename
+        return ImageFont.truetype(str(font_path), size=size)
+    except (ImportError, OSError):
         try:
-            return ImageFont.truetype(name, size=size)
-        except OSError:
-            continue
-    return ImageFont.load_default()
+            return ImageFont.load_default(size=size)
+        except TypeError:
+            return ImageFont.load_default()
 
 
 def draw_social_preview(path: Path) -> None:
@@ -144,7 +145,7 @@ def draw_social_preview(path: Path) -> None:
     )
     draw.text(
         (80, 470),
-        "The reusable output is the evaluator, provenance and documented failure space.",
+        "What remains: the evaluator, provenance records and documented failure cases.",
         fill="#9eacbf",
         font=_font(19),
     )

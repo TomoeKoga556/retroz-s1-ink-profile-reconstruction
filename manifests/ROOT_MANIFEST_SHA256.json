@@ -7,8 +7,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "6549704765ccfbe543e3252cf8e298203f2586a860f51c3748daf095c0e6ad97",
-      "size_bytes": 1979
+      "sha256": "cf3f88596a1ec46bf7c3a6b1ba3184fbd10aa1f2acd2c679edde7e03462034e5",
+      "size_bytes": 1987
     },
     {
       "path": ".gitignore",
@@ -52,8 +52,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "7360691f83408d372be3772db1167eb55a6610b96d9ea5580eec33e2fa73334b",
-      "size_bytes": 6612
+      "sha256": "1ee07efc3dd5e4e301a147da2f7ef70af78a5c1d24f360e9cdd3e028528fe785",
+      "size_bytes": 6625
     },
     {
       "path": "ROADMAP.md",
@@ -82,12 +82,12 @@
     },
     {
       "path": "configs/candidate_registry.json",
-      "sha256": "e36e5d2ad74009fbf21cd4066739f0880043d7ea78292a0d4381f04dd5c1259d",
+      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
       "size_bytes": 7540
     },
     {
       "path": "configs/candidate_registry.yaml",
-      "sha256": "9cfd1db9c51e9ea07cb57d4d1fa56561e553c0b25c8b0df8bbb377eb37ad18cf",
+      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
       "size_bytes": 6667
     },
     {
@@ -137,8 +137,8 @@
     },
     {
       "path": "docs/figures/github-social-preview.png",
-      "sha256": "3096311998bf5bf9e7eed351488b11b170f9775ba51f04d5dc5fdcda3ba4fe7a",
-      "size_bytes": 37450
+      "sha256": "a972d3c68db9956bc40300b7276ba3df459044e4de36158094f5038eeb51cb50",
+      "size_bytes": 38013
     },
     {
       "path": "docs/index.md",
@@ -257,13 +257,13 @@
     },
     {
       "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md",
-      "sha256": "3e286449b0380860918155739f3e1a1e63637ab45cba1009c914f3861551f41f",
-      "size_bytes": 11133
+      "sha256": "186a755e37fb1e9d79c602e0284d1378016534d61e3abc80a7a8bcdc33cea52b",
+      "size_bytes": 11132
     },
     {
       "path": "reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf",
-      "sha256": "8f7099d361d0a8397a3ba65b68b2a7f7714ab0f2f7ba20ffa5cf605f729d0e66",
-      "size_bytes": 193333
+      "sha256": "02abcbd5f2160fd6a702862589520cf58561ca05bce6475aea412e3a583227ba",
+      "size_bytes": 193329
     },
     {
       "path": "scripts/build_docs.py",
@@ -282,8 +282,8 @@
     },
     {
       "path": "scripts/build_report.py",
-      "sha256": "0f41e1be2451304fb6a2843affcb49c164882a9e58a1809f92ccbd015eebd959",
-      "size_bytes": 19183
+      "sha256": "8c7dfe87cfb47db42433e7a94fa295c2fe7d64a229b1e7e1854282cb45a32a65",
+      "size_bytes": 19182
     },
     {
       "path": "scripts/generate_synthetic_demo.py",
@@ -352,12 +352,12 @@
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.json",
-      "sha256": "e36e5d2ad74009fbf21cd4066739f0880043d7ea78292a0d4381f04dd5c1259d",
+      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
       "size_bytes": 7540
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.yaml",
-      "sha256": "9cfd1db9c51e9ea07cb57d4d1fa56561e553c0b25c8b0df8bbb377eb37ad18cf",
+      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
       "size_bytes": 6667
     },
     {
@@ -382,8 +382,8 @@
     },
     {
       "path": "src/retroz_s1/synthetic.py",
-      "sha256": "6b3de2472be2c45bfe65fff4bee9c7ce3336b888fbdbbe223091071185f55aa4",
-      "size_bytes": 4974
+      "sha256": "bb2a19a349650d3d7678fd8826e4275c556a9b282d86c3e3d1d55f5f139e4002",
+      "size_bytes": 5050
     },
     {
       "path": "src/retroz_s1.egg-info/PKG-INFO",

@@ -56,7 +56,7 @@ make synthetic-demo
 make test
 ```
 
-On Windows, activate the environment with `.venv\\Scripts\\activate`.
+On Windows PowerShell, activate the environment with `.venv\Scripts\Activate.ps1`.
 
 The `reproduce` extra pins the image and report-generation stack used for the
 committed artifacts. Install `.[dev,docs]` instead when you only need the latest

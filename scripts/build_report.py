@@ -86,7 +86,7 @@ SECTIONS = [
     (
         "Candidate results",
         [
-            "Candidate A attempted centered half-profile reconstruction. Its eligibility proxy removed nearly all actionable support before a valid real-image test, and a follow-up measurement route failed its own accuracy contract. The honest public interface is therefore a synthetic self-blocking reproducer rather than an arbitrary-image renderer.",
+            "Candidate A attempted centered half-profile reconstruction. Its eligibility proxy removed nearly all actionable support before a valid real-image test, and a follow-up measurement route failed its own accuracy contract. The public interface is therefore a synthetic self-blocking reproducer rather than an arbitrary-image renderer.",
             "Candidate B used a frozen monotone local shoulder remap. On the fixed real-data smoke it supplied limited directional evidence on the dark half, but the bright and total widths did not move as required, fold stability was insufficient and native output stayed close to identity. It remains runnable only as a clearly labelled historical research artifact.",
             "Candidate C explored PSF and continuous-coverage reconstruction. Synthetic results exposed halo and angular bias. One harness also inferred success from requested parameters instead of independently measuring raster output, which invalidated that evidence. The branch was closed before a valid real-image claim.",
             "Candidate D3 combined source-fixed contour estimation with subpixel cell coverage. Its synthetic contracts were extensive and successful, but the fixed real-data smoke returned outputs identical to baseline. D3 is the clearest example of the synthetic-to-real activation gap.",
@@ -141,9 +141,9 @@ def markdown() -> str:
         "",
         "**Evaluation of constrained local contour operators and their practical limits**",
         "",
-        "**Author:** Saif Shafique",
-        "**Version:** 0.1.0",
-        "**Scientific status:** `PROVISIONAL_NO_OP`",
+        "- **Author:** Saif Shafique",
+        "- **Version:** 0.1.0",
+        "- **Scientific status:** `PROVISIONAL_NO_OP`",
         "",
         "> The public report contains no protected source imagery. Visuals are generated from synthetic fixtures.",
         "",

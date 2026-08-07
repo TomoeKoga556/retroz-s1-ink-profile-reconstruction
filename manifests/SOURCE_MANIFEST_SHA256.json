@@ -2,12 +2,12 @@
   "entries": [
     {
       "path": "configs/candidate_registry.json",
-      "sha256": "e36e5d2ad74009fbf21cd4066739f0880043d7ea78292a0d4381f04dd5c1259d",
+      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
       "size_bytes": 7540
     },
     {
       "path": "configs/candidate_registry.yaml",
-      "sha256": "9cfd1db9c51e9ea07cb57d4d1fa56561e553c0b25c8b0df8bbb377eb37ad18cf",
+      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
       "size_bytes": 6667
     },
     {
@@ -27,8 +27,8 @@
     },
     {
       "path": "scripts/build_report.py",
-      "sha256": "0f41e1be2451304fb6a2843affcb49c164882a9e58a1809f92ccbd015eebd959",
-      "size_bytes": 19183
+      "sha256": "8c7dfe87cfb47db42433e7a94fa295c2fe7d64a229b1e7e1854282cb45a32a65",
+      "size_bytes": 19182
     },
     {
       "path": "scripts/generate_synthetic_demo.py",
@@ -97,12 +97,12 @@
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.json",
-      "sha256": "e36e5d2ad74009fbf21cd4066739f0880043d7ea78292a0d4381f04dd5c1259d",
+      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
       "size_bytes": 7540
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.yaml",
-      "sha256": "9cfd1db9c51e9ea07cb57d4d1fa56561e553c0b25c8b0df8bbb377eb37ad18cf",
+      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
       "size_bytes": 6667
     },
     {
@@ -127,8 +127,8 @@
     },
     {
       "path": "src/retroz_s1/synthetic.py",
-      "sha256": "6b3de2472be2c45bfe65fff4bee9c7ce3336b888fbdbbe223091071185f55aa4",
-      "size_bytes": 4974
+      "sha256": "bb2a19a349650d3d7678fd8826e4275c556a9b282d86c3e3d1d55f5f139e4002",
+      "size_bytes": 5050
     },
     {
       "path": "src/retroz_s1.egg-info/PKG-INFO",
