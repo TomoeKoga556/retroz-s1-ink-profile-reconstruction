@@ -22,8 +22,8 @@
     },
     {
       "path": "scripts/build_release.py",
-      "sha256": "8c7e1b1751f7f3ae9e6a7272ca962c6aeb7a5c9d64cf6222c8274a1b7a8732da",
-      "size_bytes": 3140
+      "sha256": "86d3983c95d4dff083e0bd96c9bae4479b6676d48cda8e219a4e6312cba9055d",
+      "size_bytes": 3204
     },
     {
       "path": "scripts/build_report.py",

@@ -41,7 +41,10 @@ def source_files() -> list[Path]:
         path
         for path in ROOT.rglob("*")
         if path.is_file()
-        and not any(part in EXCLUDED_PARTS for part in path.relative_to(ROOT).parts)
+        and not any(
+            part in EXCLUDED_PARTS or part.endswith(".egg-info")
+            for part in path.relative_to(ROOT).parts
+        )
     )
 
 
