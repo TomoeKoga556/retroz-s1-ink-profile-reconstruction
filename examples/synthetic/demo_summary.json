@@ -11,11 +11,11 @@
       320,
       320
     ],
-    "native_width_scale_from_540": 0.5925925925925926,
+    "native_width_scale_from_540": 0.592592592592593,
     "input_patch_count": 2,
     "accepted_patch_count": 2,
     "noop_patch_count": 0,
-    "noop_reasons": "{}",
+    "noop_reasons": {},
     "modified_pixel_count": 1124,
     "real_images_opened": 0,
     "candidate_output_dependent_geometry": false
@@ -32,8 +32,8 @@
       320,
       320
     ],
-    "dark_target_width_px": 0.5845925925925926,
-    "bright_target_width_px": 0.6173037037037037,
+    "dark_target_width_px": 0.584592592592593,
+    "bright_target_width_px": 0.617303703703704,
     "support_radius_px": 1.0,
     "p50_offset_px": 0.0,
     "segment_count": 1,
@@ -50,18 +50,18 @@
         "status": "APPLIED",
         "support_pixels": 100,
         "changed_pixels_linear": 0,
-        "mean_abs_linear_rgb": 7.170190367370803e-19,
-        "max_abs_linear_rgb": 2.2551405187698492e-17,
+        "mean_abs_linear_rgb": 0.0,
+        "max_abs_linear_rgb": 0.0,
         "plateau_read_radius_px": 3.0,
         "dark_plateau_linear_rgb": [
-          0.6239604110592908,
-          0.09084171676066576,
-          0.05612849604490194
+          0.623960411059291,
+          0.0908417167606658,
+          0.0561284960449019
         ],
         "bright_plateau_linear_rgb": [
-          0.6239604110592908,
-          0.7304607547001499,
-          0.7529422302946533
+          0.623960411059291,
+          0.73046075470015,
+          0.752942230294653
         ]
       }
     ]

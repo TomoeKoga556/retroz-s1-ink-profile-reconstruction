@@ -1,6 +1,17 @@
 # Roadmap
 
-1. Preserve the current S1 evidence and identity/bypass production behavior.
-2. Reuse the evaluator contracts in S2–S6 without inheriting rejected formulas.
-3. Reopen S1 only with materially new evidence, labels, architecture, or a learning-based contour model.
-4. Resolve ownership and dependency licensing before publication.
+S1 is closed for additional strength searches inside the existing operator
+families. Repeating the same parameter sweeps would add volume without changing
+the evidence.
+
+Work should resume only when at least one of the following changes materially:
+
+- contour representation, for example vector or learned semantics;
+- supervision, including reliable labels or temporal information;
+- perceptual target and review protocol;
+- evidence that the current safety gates are excluding a useful region for a
+  defensible reason.
+
+The evaluator, provenance model and synthetic harness can be reused in later
+RetroZ stages, but rejected S1 formulas should not be carried forward by
+default.

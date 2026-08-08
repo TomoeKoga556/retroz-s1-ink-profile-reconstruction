@@ -2,68 +2,53 @@
   "entries": [
     {
       "path": "configs/candidate_registry.json",
-      "sha256": "19f8fda53fe5c98131e9c5fe9c0b02c08ce88841a01e21523d1b3125e39ec884",
-      "size_bytes": 7667
+      "sha256": "bffe9feb6e3c34fd592a2b3afb252d98a9eef57cca1374b9637b085d1d9b5a77",
+      "size_bytes": 7540
     },
     {
       "path": "configs/candidate_registry.yaml",
-      "sha256": "51a76cbf71612382336c652b01de7f7f262a8208949d29aad3acb0eea4db38d0",
-      "size_bytes": 6229
+      "sha256": "0544bcf72f625fedd7264daebd732b925aa3c5acb96d94f2ede59c41258d8e2c",
+      "size_bytes": 6667
     },
     {
       "path": "scripts/build_docs.py",
-      "sha256": "1032b4bb833711dbaf477a7be3cb572ee72139951fd598c88ff11906c389d538",
-      "size_bytes": 2324
+      "sha256": "478609c1aa441d8563963d3a81b7c11937414ea17150c2c344b4f664b1119e4f",
+      "size_bytes": 500
     },
     {
       "path": "scripts/build_manifests.py",
-      "sha256": "fbaf0b51b394d8f1d1c8f3b879f40f14640e17189018586a8a3197db2f1867fc",
-      "size_bytes": 3942
+      "sha256": "e6fc0f4cbe9f9735e03b26355bd5a8a3ec1001caa766ec8bb13cdb23cfc48e55",
+      "size_bytes": 2776
     },
     {
       "path": "scripts/build_release.py",
-      "sha256": "9a003303d5dd67db628866f7094b6bcc6fd22950e40a4f57682564e99d2bcd89",
-      "size_bytes": 2646
+      "sha256": "8c7e1b1751f7f3ae9e6a7272ca962c6aeb7a5c9d64cf6222c8274a1b7a8732da",
+      "size_bytes": 3140
     },
     {
       "path": "scripts/build_report.py",
-      "sha256": "2ba67f9433138028fc8c02607309d357b1faf8dd76fca7316f1514a965b7f291",
-      "size_bytes": 20576
-    },
-    {
-      "path": "scripts/clean_room_test.py",
-      "sha256": "1b98ef6862b6b841f8620f23633d4bab869995fe6aed7952c74e6e6cf268a5ce",
-      "size_bytes": 4482
+      "sha256": "8c7dfe87cfb47db42433e7a94fa295c2fe7d64a229b1e7e1854282cb45a32a65",
+      "size_bytes": 19182
     },
     {
       "path": "scripts/generate_synthetic_demo.py",
-      "sha256": "bb9d19455cdcf5102f15c5323ef578ade290e8c0478852a5c72271a7d9815e81",
-      "size_bytes": 3991
-    },
-    {
-      "path": "scripts/security_privacy_scan.py",
-      "sha256": "4d9a220b2f1e3b034bc3985dd77ba44808be46b8a92e3bf861e46e3deeef56d7",
-      "size_bytes": 2755
-    },
-    {
-      "path": "scripts/update_large_file_report.py",
-      "sha256": "ef61ecc4403579dd16995c0dbd46c1adbe56d03c75e3909bb73c45c618d3b31e",
-      "size_bytes": 1793
+      "sha256": "db6436fb874686713060ddedd7a8cc44754e4e17e74cff29be0f8f140e299085",
+      "size_bytes": 5334
     },
     {
       "path": "scripts/update_registry_provenance.py",
-      "sha256": "9b78f1b0f13a194e23a624066bf73bc6b7df2415674255e88fbcd2a5ac46621c",
-      "size_bytes": 1904
+      "sha256": "4732033afee1dfe5f8d3035ef5c1f7046827b82ae958649a13948c7785e30944",
+      "size_bytes": 4583
     },
     {
       "path": "scripts/validate_documents.py",
-      "sha256": "74fb3f1394ce5a806dec5989dfa026e36b782f210c80513665a38cfda98f5113",
-      "size_bytes": 2857
+      "sha256": "cce1e57893eaf0f06338668090424091da749c3022e19d0d7598e975aec4bea5",
+      "size_bytes": 6068
     },
     {
       "path": "scripts/verify_repository.py",
-      "sha256": "8ec043e25f39b588d637bbdc992e09cac804ad015fdf097954610dd9f56e1e6c",
-      "size_bytes": 3605
+      "sha256": "fabec24bcf184f8d8abe429364b4ca33d6653e83fe1fa1d1f101b0baf918fa92",
+      "size_bytes": 6317
     },
     {
       "path": "src/retroz_s1/__init__.py",
@@ -82,8 +67,8 @@
     },
     {
       "path": "src/retroz_s1/candidates/b_runtime.py",
-      "sha256": "07bc85cc88937c9e67c8a6bf9578f82cc3444a1d3d5efeb5909026fe35c3d7ac",
-      "size_bytes": 29281
+      "sha256": "a034667b53a6928f2cdab29a596ad17d3d0dc37363e00f18e6e1264858d40d38",
+      "size_bytes": 29194
     },
     {
       "path": "src/retroz_s1/candidates/d3_renderer.py",
@@ -107,18 +92,18 @@
     },
     {
       "path": "src/retroz_s1/cli.py",
-      "sha256": "ebdea73700f898b4899546569f72acbdba3efe645c0f3951047b0f1406d4bc95",
-      "size_bytes": 7927
+      "sha256": "1275dc3242015d2cd9561cdf953d4f762b918444d21d88f42afac87210fb2545",
+      "size_bytes": 9107
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.json",
-      "sha256": "19f8fda53fe5c98131e9c5fe9c0b02c08ce88841a01e21523d1b3125e39ec884",
-      "size_bytes": 7667
+      "sha256": "bffe9feb6e3c34fd592a2b3afb252d98a9eef57cca1374b9637b085d1d9b5a77",
+      "size_bytes": 7540
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.yaml",
-      "sha256": "51a76cbf71612382336c652b01de7f7f262a8208949d29aad3acb0eea4db38d0",
-      "size_bytes": 6229
+      "sha256": "0544bcf72f625fedd7264daebd732b925aa3c5acb96d94f2ede59c41258d8e2c",
+      "size_bytes": 6667
     },
     {
       "path": "src/retroz_s1/geometry/__init__.py",
@@ -132,40 +117,45 @@
     },
     {
       "path": "src/retroz_s1/io.py",
-      "sha256": "f1ad95bb8d4dd4df57584c4d7be760b1ffe51cf97bda22f82b4f85106f70011f",
-      "size_bytes": 1851
+      "sha256": "7ba38823bb29f3b062d628ca7eda5d865488652db4361f357c3fc8e612352e7b",
+      "size_bytes": 2302
     },
     {
       "path": "src/retroz_s1/public_masks.py",
-      "sha256": "8fbd762297c3d653281269ec715f7011c951e5e96bd712ebd1a89301076eaac5",
-      "size_bytes": 1614
+      "sha256": "3aa2e1939f9522830ba5f8a097c6d108d68a4caf0d3faba188fa4c8276c29c6a",
+      "size_bytes": 1905
     },
     {
       "path": "src/retroz_s1/synthetic.py",
-      "sha256": "e1b07e8d9e4714f1cddb828434fb334fe385fb153046d13d23390e59598a851a",
-      "size_bytes": 3299
+      "sha256": "9150b9026638805b0579322916e9cdf22a7f66ea64f8d35e847b304883361d15",
+      "size_bytes": 5301
     },
     {
       "path": "tests/test_assets_and_manifest.py",
-      "sha256": "2ec55f3813f87798d8024d13e28de3a0b1cbe5b55e2fd103d63be52f49ab10d0",
-      "size_bytes": 992
+      "sha256": "e142c391eb12dcd87b3f01e7762e19c1595dac41c99e421ed889b05b4b607eef",
+      "size_bytes": 1350
     },
     {
       "path": "tests/test_candidates.py",
-      "sha256": "a7da3c9a07767db94198d1cf5aecff93cae5a06d767bdc44b1e4baeacde380a8",
-      "size_bytes": 1688
+      "sha256": "32f9f2fc5ac279139a6e008a0660458e18c9433a37843f36ac0852d5142c19c9",
+      "size_bytes": 2820
     },
     {
       "path": "tests/test_cli.py",
-      "sha256": "9a7a480098868689d7b9e6e65d20794b1df4cf003fc53c231f475603a5c13256",
-      "size_bytes": 710
+      "sha256": "f006df6518f9fd968021cf5de6bdf3f3a067329d2ce1957aad1601e5d6de174d",
+      "size_bytes": 1054
+    },
+    {
+      "path": "tests/test_io.py",
+      "sha256": "c04cccdfc0564f168faa599792cf0f96b9fe7cd6479c4eb4a95da3e94c9eb396",
+      "size_bytes": 883
     },
     {
       "path": "tests/test_registry.py",
-      "sha256": "edcfb86c75f439764743ef66c1cd6cc027c14b69032d355ab136254abc52faf1",
-      "size_bytes": 839
+      "sha256": "1787274c881da59688f877f45c85df96c1493dbaf8983c747045dd3e3f2b2ce0",
+      "size_bytes": 1040
     }
   ],
   "schema": 1,
-  "scope": "public_source"
+  "scope": "public_source_tests_and_configuration"
 }

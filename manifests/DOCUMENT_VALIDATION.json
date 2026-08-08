@@ -1,7 +1,8 @@
 {
   "status": "PASS",
-  "json_files": 28,
-  "yaml_files": 4,
-  "local_links": 3,
+  "json_files": 12,
+  "yaml_files": 5,
+  "local_links": 21,
+  "version": "0.1.0",
   "errors": []
 }

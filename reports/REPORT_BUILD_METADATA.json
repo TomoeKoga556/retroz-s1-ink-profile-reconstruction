@@ -1,7 +1,9 @@
 {
   "markdown": "RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md",
   "pdf": "RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.pdf",
-  "pdf_pages": 57,
+  "pdf_pages": 14,
+  "author": "Saif Shafique",
+  "version": "0.1.0",
   "scientific_status": "PROVISIONAL_NO_OP",
   "protected_assets": 0
 }

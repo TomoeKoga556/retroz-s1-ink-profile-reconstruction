@@ -2,9 +2,20 @@ cff-version: 1.2.0
 message: "If you use this research package, please cite it."
 title: "RetroZ S1 — Ink Profile Reconstruction"
 type: software
-version: 0.1.0-research
+version: 0.1.0
 date-released: "2026-08-05"
-abstract: "A reproducible research framework for controlled ink-profile reconstruction. Status: Provisional No-Op under the evaluated constraints."
-authors: Saif Shafique
-  - name: "RetroZ Lab contributor"
-repository-code: "https://github.com/REPLACE_WITH_OWNER/retroz-s1-ink-profile-reconstruction"
+authors:
+  - family-names: "Shafique"
+    given-names: "Saif"
+repository-code: "https://github.com/TomoeKoga556/retroz-s1-ink-profile-reconstruction"
+url: "https://github.com/TomoeKoga556/retroz-s1-ink-profile-reconstruction"
+license: Apache-2.0
+abstract: >-
+  A reproducible Python research package for constrained ink-edge
+  reconstruction, provenance-bound evaluation and negative-results analysis.
+keywords:
+  - computer vision
+  - image processing
+  - reproducible research
+  - negative results
+  - provenance

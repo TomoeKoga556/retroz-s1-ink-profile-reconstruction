@@ -1,3 +1,0 @@
-# Five Minute Project Pitch
-
-The project separated a broad aesthetic goal into one measurable spatial component: dark-side width, bright-side width, total width, and p50. Candidate A exposed activation failure; B exposed directional incompleteness; C exposed halo and measurement coupling; D3 exposed a synthetic-real gap. I then removed contour-localization uncertainty with a manual Oracle. The Oracle was technically nonzero and perfectly local, yet 50 native blind comparisons were indistinguishable. That bounded negative result prevents wasted production work and leaves reusable tooling for S2–S6.

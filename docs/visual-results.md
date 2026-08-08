@@ -1,11 +1,30 @@
-# Public Visual Results
+# Visual results
 
-All images on this page are procedurally generated and copyright-independent.
+All visuals on this page are generated from an original geometric fixture.
+They demonstrate package behavior and failure modes without including protected
+media.
 
-![Synthetic candidate comparison](assets/generated/candidate-comparison.png)
+## Candidate comparison
 
-The comparison is a software demonstration, not evidence of historical visual fidelity. B and D3 use documented public mask approximations.
+![Input, Candidate B, Candidate D3 and Oracle output](assets/generated/candidate-comparison.png)
+
+At native scale the outputs are intentionally difficult to distinguish. That is
+the point of the result: a technically valid render path can still be too close
+to identity to justify production use.
+
+## Oracle delta
 
 ![Oracle output and amplified delta](assets/generated/oracle-delta.png)
 
-The second panel amplifies numerical difference by 32× to make localization inspectable. The native Oracle blind-review conclusion remains no visible difference.
+The right panel amplifies the absolute RGB delta by 32×. The amplified view shows
+that the renderer changed pixels, while the native output on the left explains
+why the blind review still returned “no visible difference.”
+
+## Regeneration
+
+```bash
+make synthetic-demo
+```
+
+The command recreates the comparison, amplified delta, candidate fixtures,
+synthetic A/C failure cases and the GitHub social-preview image.

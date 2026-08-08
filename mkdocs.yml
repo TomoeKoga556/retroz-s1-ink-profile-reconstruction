@@ -1,14 +1,31 @@
 site_name: RetroZ S1 — Ink Profile Reconstruction
-site_description: Reproducible ink-profile reconstruction research
-theme:
-  name: mkdocs
+site_description: Constrained ink-edge reconstruction research and negative-results analysis
+repo_url: https://github.com/TomoeKoga556/retroz-s1-ink-profile-reconstruction
+repo_name: TomoeKoga556/retroz-s1-ink-profile-reconstruction
+edit_uri: edit/main/docs/
+
 nav:
   - Home: index.md
-  - Overview: project-overview.md
-  - Architecture: architecture.md
-  - Methodology: methodology.md
-  - Candidates: candidate-lineages.md
-  - Failure Atlas: failure-atlas.md
-  - Negative Results: negative-results.md
-  - Limitations: limitations.md
-  - Reproducibility: reproducibility.md
+  - Study design:
+      - Project overview: project-overview.md
+      - Architecture: architecture.md
+      - Methodology: methodology.md
+  - Results:
+      - Candidate lineages: candidate-lineages.md
+      - Visual results: visual-results.md
+      - Failure atlas: failure-atlas.md
+      - Negative result: negative-results.md
+  - Reference:
+      - Reproducibility: reproducibility.md
+      - Public asset policy: PUBLIC_ASSET_POLICY.md
+      - API and CLI: api.md
+      - Limitations: limitations.md
+      - Decision log: decision-log.md
+
+theme:
+  name: mkdocs
+  navigation_depth: 3
+
+markdown_extensions:
+  - fenced_code
+  - tables

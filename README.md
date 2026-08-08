@@ -1,126 +1,151 @@
 # RetroZ S1 — Ink Profile Reconstruction
 
-A reproducible research framework for analyzing and transforming anime ink-edge profiles while preserving local geometry, color structure, and protected image regions.
+[![CI](https://github.com/TomoeKoga556/retroz-s1-ink-profile-reconstruction/actions/workflows/ci.yml/badge.svg)](https://github.com/TomoeKoga556/retroz-s1-ink-profile-reconstruction/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB)](https://www.python.org/)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-S1 investigates whether modern digitally rendered line work can be shifted toward the broader and more asymmetric contour characteristics observed in selected traditional cel-animation references.
+RetroZ S1 is a Python research package for one narrow question: can a local,
+deterministic image operator broaden selected ink-edge profiles without moving
+the perceived contour or damaging protected regions?
 
-## Current Status
+> **Result:** none of the five evaluated lineages produced a clearly visible,
+> production-worthy improvement. S1 therefore remains **identity/bypass**. This
+> is a bounded negative result, not a claim that line reconstruction is
+> impossible in general.
 
-**Provisional No-Op under the evaluated constraints**
+![Synthetic comparison of the evaluated render paths](docs/assets/generated/candidate-comparison.png)
 
-The tested analytical, geometric, semantic, and manually guided methods did not produce a clearly useful production-worthy visible improvement. The repository preserves the implementations, evaluation infrastructure, experimental evidence, and negative results required to reproduce that conclusion. This is not a universal impossibility claim.
+The comparison above is generated from a synthetic fixture. It is intentionally
+subtle: several candidates changed measurements or internal masks without
+creating a useful visible difference.
 
-## Project Motivation
+## What is in the repository
 
-The wider RetroZ Lab studies efficient, deterministic methods for translating selected visual properties of traditional cel animation into offline and eventually real-time processing. S1 isolates ink-edge profile reconstruction from color, grain, halation, scan tonality, and temporal behavior.
+- deterministic implementations for the surviving public candidate paths;
+- synthetic reproducers for failure modes that should not be run on user images;
+- a candidate registry with status, scope, known failure and provenance fields;
+- fail-closed CLI behavior for rejected research candidates;
+- generated visual fixtures, integrity manifests and a reproducible report;
+- tests for determinism, non-mutation, local passthrough and public-asset rules.
 
-## Research Question
+## Study outcome
 
-Can a constrained local operator broaden or reshape modern digital ink profiles toward selected cel-era references without moving the perceived contour, damaging color plateaus, creating halo, or altering protected regions?
-
-## Core Contributions
-
-- A fail-closed evaluation methodology with frame-to-episode-to-fold aggregation.
-- Clean-room analytical, PSF, coverage, and geometry-guided candidate implementations.
-- Process isolation, provenance binding, and synthetic-versus-real failure analysis.
-- A final human-verified Oracle experiment that separated localization failure from renderer utility.
-- Public-safe synthetic reproducers and a standalone research CLI.
-
-## Candidate Lineages
-
-| Candidate | Public name | Final evidence |
+| Lineage | Approach | Final result |
 |---|---|---|
-| A | Half-Profile Constrained Reconstruction | Rejected before real images: activation/measurement failure |
-| B | Monotone Local Shoulder Remapping | Real near-no-op; bright and total direction failed |
-| C | PSF and Continuous-Coverage Reconstruction | Synthetic reject: halo, angular bias, invalid harness |
-| D3 | Geometry-Guided Contour Reconstruction | Real exact no-op after extensive synthetic success |
-| Oracle | Human-Verified Contour Feasibility Study | 50/50 native blind panels showed no visible difference |
+| A | Half-profile constrained reconstruction | Rejected before real-image evaluation because activation and measurement checks failed |
+| B | Monotone local shoulder remapping | Real near-no-op; limited dark-side movement, but the bright and total directions failed |
+| C | PSF and continuous-coverage reconstruction | Rejected on synthetic fixtures because of halo, angular bias and an invalid measurement harness |
+| D3 | Geometry-guided contour reconstruction | Exact no-op on the fixed real-data smoke test after passing synthetic contracts |
+| Oracle | Human-labelled contour feasibility study | Technically nonzero output, but 50/50 native blind panels showed no visible difference |
 
-## Results
+No lineage received a Full PASS or production activation. The useful output of
+S1 is the evaluation framework, the documented failure modes and a smaller
+search space for later work.
 
-No S1 candidate earned a Full PASS or production activation. Candidate B supplied limited directional evidence on the dark side, D3 supplied reusable geometry and sandbox infrastructure, and the Manual Oracle established a soft ceiling for the evaluated contour-renderer family.
-
-## What Worked
-
-Preregistration, independent measurement, hard-mask passthrough, provenance, runtime attestation, deterministic synthetic fixtures, and fail-closed decisions worked as intended. These components remain reusable for later RetroZ stages.
-
-## What Did Not Work
-
-Local correctness did not imply useful real activation. Several operators were self-blocking, directionally incomplete, halo-prone, angle-dependent, or exactly inactive on real samples. Perfect manual labels did not make the tested renderer family perceptually useful.
-
-## Quickstart
+## Quick start
 
 ```bash
-python -m pip install -e . --no-deps
-python -m retroz_s1 list-candidates
-python -m retroz_s1 inspect --candidate B
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev,reproduce]"
+
+retroz-s1 list-candidates
+retroz-s1 inspect --candidate B
 make synthetic-demo
+make test
 ```
 
-## CLI
+On Windows PowerShell, activate the environment with `.venv\Scripts\Activate.ps1`.
 
-Rejected candidates always require explicit acknowledgement:
+The `reproduce` extra pins the image and report-generation stack used for the
+committed artifacts. Install `.[dev,docs]` instead when you only need the latest
+compatible documentation toolchain.
+
+## CLI safety behavior
+
+Every historical or rejected candidate requires an explicit acknowledgement:
 
 ```bash
-python -m retroz_s1 render --candidate B --input ./my_image.png --output ./output_b.png --allow-rejected-research-candidate
-python -m retroz_s1 reproduce-failure --candidate A --output ./failure_a --allow-rejected-research-candidate
-python -m retroz_s1 compare --input ./my_image.png --candidates B,D3 --output ./comparison --allow-rejected-research-candidate
-python -m retroz_s1 oracle-render --input ./my_image.png --labels ./examples/synthetic/oracle_labels.json --method P1 --tier R0 --output ./oracle.png --allow-rejected-research-candidate
+retroz-s1 render \
+  --candidate B \
+  --input ./my_image.png \
+  --output ./output_b.png \
+  --allow-rejected-research-candidate
 ```
 
-Every image output receives a provenance sidecar. The public B and D3 demonstrations use documented mask approximations and are not exact replays of private TRAIN experiments.
+Candidate A and C are exposed only through synthetic failure reproduction:
 
-## Synthetic Demonstrations
+```bash
+retroz-s1 reproduce-failure \
+  --candidate A \
+  --output ./failure_a \
+  --allow-rejected-research-candidate
+```
 
-`make synthetic-demo` creates geometric edge profiles, failure cases, and an Oracle example without protected media.
+Image outputs receive a JSON provenance sidecar. Public B and D3 runs use
+explicitly documented mask approximations; they are not presented as exact
+replays of the private real-frame experiments.
 
-## Reproducing Candidate Failures
+## Common commands
 
-Candidate A and C are deliberately excluded from the normal image render path. Their strongest honest public interface is `reproduce-failure`.
+| Command | Purpose |
+|---|---|
+| `make test` | Run the test suite |
+| `make lint` | Run the repository's static checks |
+| `make synthetic-demo` | Regenerate all public images and synthetic failures |
+| `make report` | Regenerate the Markdown report and PDF |
+| `make docs-build` | Build the MkDocs site into `site-preview/` |
+| `make verify` | Refresh provenance and manifests, then verify the public tree |
+| `make release` | Build a deterministic local source archive and report bundle |
 
-## Oracle Rendering with User Labels
+## Reproducibility boundary
 
-The Oracle command accepts user-owned imagery and explicit contour polylines. No protected labels or source frames are bundled or downloaded.
+| Component | Publicly reproducible? |
+|---|---|
+| Package installation, CLI and tests | Yes |
+| Synthetic fixtures and failure reproducers | Yes |
+| Generated documentation, report and manifests | Yes |
+| Candidate B and D3 on user-owned images | Yes, with public mask approximations |
+| Historical real-frame experiments | No; source media is not distributed |
+| Historical private labels and exact M0 masks | No |
 
-## Research Report
+The private evidence is summarized and provenance-bound, but the repository does
+not imply that protected source material is publicly replayable.
 
-See [the long-form report](reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md) and the locally generated PDF.
+## Repository map
 
-## Repository Structure
+- `src/retroz_s1/` — package and command-line interface
+- `configs/` — candidate registry and frozen recipes
+- `tests/` — behavioral and repository-policy tests
+- `examples/synthetic/` — public-safe fixtures and failure examples
+- `docs/` — study design, results and reference documentation
+- `reports/` — canonical generated report and build metadata
+- `manifests/` — public integrity and provenance records
 
-`src/` contains the package, `configs/` the candidate registry, `examples/` public-safe fixtures, `docs/` the research site, `reports/` reports, and `manifests/` provenance.
+## Documentation
 
-## Limitations
+Start with the [project overview](docs/project-overview.md), then read the
+[methodology](docs/methodology.md), [candidate results](docs/candidate-lineages.md)
+and [reproducibility boundary](docs/reproducibility.md). The longer technical
+account is generated at
+[`reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md`](reports/RETROZ_S1_INK_PROFILE_RECONSTRUCTION_REPORT.md).
 
-The evidence is bounded to the evaluated sources, folds, formulas, safety constraints, and human blind review. It does not prove mathematical or creative impossibility and does not exclude materially different learned methods.
+## Project status
 
-## Future Work
+The machine-readable status remains `PROVISIONAL_NO_OP`. In practical terms,
+production code should treat S1 as identity/bypass unless a materially different
+architecture produces new evidence. See [STATUS.md](STATUS.md) for the exact
+claim boundary.
 
-Future S1 work requires materially new evidence or architecture, such as learned contour semantics or a different spatial hypothesis. S2–S6 may reuse the evaluator without inheriting S1 formulas.
+## Assets, license and citation
 
-## Relation to RetroZ Lab
+No protected animation frames, crops, videos or private contour labels are
+included. Public images are synthetic or generated from synthetic fixtures. See
+[the asset policy](docs/PUBLIC_ASSET_POLICY.md) and
+[source/asset boundaries](SOURCE_AND_ASSET_BOUNDARIES.md).
 
-This is the standalone S1 research package, not a monorepo. Other RetroZ stages remain separate future projects.
-
-## Citation
-
-Use `CITATION.cff`.
-
-## Asset Policy
-
-No protected anime frames, crops, contact sheets, videos, or private labels are included. See `docs/PUBLIC_ASSET_POLICY.md`.
-
-## License Status
-
-The repository's original source code, documentation, synthetic fixtures, and
-generated research artifacts are released under the Apache License 2.0 unless
-otherwise noted.
-
-The repository does not publicly include protected anime media, model weights,
-or bundled third-party source packages.
-
-Third-party dependencies remain under their respective licenses. See:
-
-- `THIRD_PARTY_NOTICES.md`
-- `DEPENDENCY_LICENSE_REPORT.md`
-- `SOURCE_OWNERSHIP_AUDIT.md`
+Project code, documentation and project-generated assets are distributed under
+the [Apache License 2.0](LICENSE), unless a file says otherwise. Third-party
+packages keep their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Citation metadata is available in [CITATION.cff](CITATION.cff).

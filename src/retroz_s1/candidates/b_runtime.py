@@ -1,15 +1,8 @@
 #!/usr/bin/env python3
-"""Pure-array clean-room runtime for historical S1 Candidate B v2 (MLSR).
+"""Frozen pure-array runtime for Candidate B v2 (MLSR).
 
-The optical map and active parameter set reproduce the manifest-pinned
-historical ``candidate_b_mlsr.py``.  A separate audit records that its imported
-helper bytes were not closed by the historical package manifest.  The only
-integration refactor is that the seven canonical source-derived M0 masks are
-supplied as immutable arrays by the caller instead of being reconstructed
-through project imports.
-
-This module performs no file, network, environment, process, or global-state
-I/O.  Import defines constants, types, and functions only.
+The module exposes the historical optical map with caller-supplied masks. It
+performs no file, network, process or global-state I/O.
 """
 
 from __future__ import annotations
@@ -20,7 +13,7 @@ from typing import Any, Mapping
 import numpy as np
 
 
-CANDIDATE_ID = "cursor_s1_candidate_b_mlsr_recipe"
+CANDIDATE_ID = "retroz_s1_candidate_b_mlsr_v2"
 CANDIDATE_FAMILY = "B"
 FAMILY_NAME = "mlsr_monotone_local_shoulder_reconstruction"
 STAGE = "post_e8b_native"
@@ -105,7 +98,7 @@ _RECIPE_KEYS = (
     "strength_search_allowed",
 )
 _HISTORICAL_BINDING = (
-    ("historical_package", "cursor_s1_candidate_b_2026-07-18_v2"),
+    ("historical_package", "candidate_b_2026-07-18_v2"),
     (
         "historical_candidate_runtime_sha256",
         "64fa65c2f7796bb353a54cf31db183d88bf3fd08c43c561320fc3d2882facefa",
@@ -201,6 +194,14 @@ def _require_exact_keys(
     return result
 
 
+def frozen_params(*, enabled: bool = True) -> CandidateBParams:
+    """Return the single frozen Candidate B parameter set."""
+    if type(enabled) is not bool:
+        raise TypeError("enabled must be an exact bool")
+    values = {name: float(expected) for name, expected in _FROZEN_FLOAT_FIELDS}
+    return CandidateBParams(enabled=enabled, **values)
+
+
 def params_from_dict(values: object) -> CandidateBParams:
     """Reject omissions, extras, coercions, NaN/Inf, and parameter drift."""
 
@@ -229,7 +230,7 @@ def recipe_parameters(recipe: object) -> CandidateBParams:
     document = _require_exact_keys(recipe, _RECIPE_KEYS, "Candidate B recipe")
     fixed_scalars = (
         ("schema_version", 1),
-        ("artifact", "candidate_b_cleanroom_recipe"),
+        ("artifact", "candidate_b_frozen_recipe"),
         ("status", "historical_v2_formula_fixed_no_search"),
         ("candidate_id", CANDIDATE_ID),
         ("candidate_family", CANDIDATE_FAMILY),
