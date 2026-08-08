@@ -17,8 +17,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "e0199f0f8c7b31f6b3c51981d69931c8fbd3357c5f5b9f194ba1d063d6ca1caf",
-      "size_bytes": 905
+      "sha256": "2739828964d1810252b00ac7380ddd41549f6129f575ec344839a71723153d7b",
+      "size_bytes": 997
     },
     {
       "path": "CITATION.cff",
@@ -242,8 +242,8 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "65670e8683afa0caed460fd6b87b187f0f71a80e1a08de7eed15eadc7c94f4e3",
-      "size_bytes": 1784
+      "sha256": "3ccd45b76db2212f25cc6bf43a38b14283427a856cf9000d53e5d0d3586baca0",
+      "size_bytes": 1788
     },
     {
       "path": "reports/README.md",

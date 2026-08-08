@@ -4,6 +4,8 @@ All notable public changes are recorded here.
 
 ## [Unreleased]
 
+- Require Pillow 12.3.0 or newer to address upstream image-processing security advisories.
+
 ## [0.1.0] - 2026-08-05
 
 - Published the standalone S1 research package.
