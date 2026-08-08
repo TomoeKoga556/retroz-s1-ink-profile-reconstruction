@@ -24,9 +24,13 @@ def edge_fixture(size: int = 256, angle: float = 0.0) -> np.ndarray:
 
 
 def reproduce_a(output: Path) -> dict[str, object]:
-    x = np.linspace(-4.0, 4.0, 512)
-    edge = 1.0 / (1.0 + np.exp(-x * 3.0))
-    confidence = np.zeros_like(edge)
+    raw_x = np.linspace(-4.0, 4.0, 512, dtype=np.float64)
+    raw_edge = 1.0 / (1.0 + np.exp(-raw_x * 3.0))
+
+    # Normalize insignificant libm/SIMD differences before serialization.
+    x = np.ascontiguousarray(np.round(raw_x, 12), dtype="<f8")
+    edge = np.ascontiguousarray(np.round(raw_edge, 12), dtype="<f8")
+    confidence = np.zeros(edge.shape, dtype="<f8")
     data = {
         "candidate": "A",
         "failure": "self-blocking activation",

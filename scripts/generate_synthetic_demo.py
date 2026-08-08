@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
 
 import numpy as np
@@ -67,6 +68,28 @@ def panel(images: list[tuple[str, np.ndarray]], path: Path) -> None:
         draw.text((index * width + 9, 10), label, fill="#f5f7fb")
     path.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(path)
+
+
+def _stable_json_value(value: object) -> object:
+    if isinstance(value, Mapping):
+        return {
+            str(key): _stable_json_value(item)
+            for key, item in value.items()
+        }
+    if isinstance(value, (list, tuple)):
+        return [_stable_json_value(item) for item in value]
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, (float, np.floating)):
+        number = float(value)
+        if not np.isfinite(number):
+            raise ValueError("demo summary contains a non-finite value")
+        if abs(number) < 1e-15:
+            return 0.0
+        return float(f"{number:.15g}")
+    return value
 
 
 def main() -> None:
@@ -137,7 +160,7 @@ def main() -> None:
         "oracle_diagnostics": dict(oracle_diagnostics),
     }
     (OUT / "demo_summary.json").write_text(
-        json.dumps(summary, indent=2, default=str) + "\n",
+        json.dumps(_stable_json_value(summary), indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     print(json.dumps({"generated_assets": 10, "protected_assets": 0}, indent=2))

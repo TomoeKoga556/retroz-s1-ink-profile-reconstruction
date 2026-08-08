@@ -65,7 +65,19 @@ def test_oracle_user_labels_are_local():
 
 
 def test_failure_reproducers(tmp_path):
-    assert reproduce_a(tmp_path / "a")["activated_samples"] == 0
+    first = tmp_path / "a-first"
+    second = tmp_path / "a-second"
+
+    assert reproduce_a(first)["activated_samples"] == 0
+    assert reproduce_a(second)["activated_samples"] == 0
+    assert (first / "activation_failure.npz").read_bytes() == (
+        second / "activation_failure.npz"
+    ).read_bytes()
+
+    with np.load(first / "activation_failure.npz") as artifact:
+        assert np.array_equal(artifact["x"], np.round(artifact["x"], 12))
+        assert np.array_equal(artifact["edge"], np.round(artifact["edge"], 12))
+
     assert reproduce_c(tmp_path / "c")["mean_absolute_halo_energy"] > 0
 
 

@@ -82,12 +82,12 @@
     },
     {
       "path": "configs/candidate_registry.json",
-      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
+      "sha256": "bffe9feb6e3c34fd592a2b3afb252d98a9eef57cca1374b9637b085d1d9b5a77",
       "size_bytes": 7540
     },
     {
       "path": "configs/candidate_registry.yaml",
-      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
+      "sha256": "0544bcf72f625fedd7264daebd732b925aa3c5acb96d94f2ede59c41258d8e2c",
       "size_bytes": 6667
     },
     {
@@ -192,13 +192,13 @@
     },
     {
       "path": "examples/synthetic/demo_summary.json",
-      "sha256": "1f7e07c747e7ef303dcec57410f2e76ac9197ec4710c85d7504ba3e1b2abbbcb",
-      "size_bytes": 2014
+      "sha256": "b33005eebd020afc02a396e30a8acc893aaf30ccd3bdf6eec42311dc9a86eba0",
+      "size_bytes": 1965
     },
     {
       "path": "examples/synthetic/failure_a/activation_failure.npz",
-      "sha256": "66e05d6e83d29304c0fec9b22cada71d92eaaa44768dca303df288bfff383c78",
-      "size_bytes": 7002
+      "sha256": "b0b5bab7cb0606e81856e98820e8b80dee0ce79f0d7bd971958d376fd7828fe3",
+      "size_bytes": 6956
     },
     {
       "path": "examples/synthetic/failure_a/result.json",
@@ -287,8 +287,8 @@
     },
     {
       "path": "scripts/generate_synthetic_demo.py",
-      "sha256": "2eb024937074cc538e4a3c318f871da481a66224cef92ed8ac7604363d809266",
-      "size_bytes": 4549
+      "sha256": "db6436fb874686713060ddedd7a8cc44754e4e17e74cff29be0f8f140e299085",
+      "size_bytes": 5334
     },
     {
       "path": "scripts/update_registry_provenance.py",
@@ -352,12 +352,12 @@
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.json",
-      "sha256": "7eeb3489ab0e0422f3c9be3e7b339f2cff7dbb8e0b908c52201f289fc12115a9",
+      "sha256": "bffe9feb6e3c34fd592a2b3afb252d98a9eef57cca1374b9637b085d1d9b5a77",
       "size_bytes": 7540
     },
     {
       "path": "src/retroz_s1/configs/candidate_registry.yaml",
-      "sha256": "b067a1b286cfbc1cd2419597fe79b7797ad800926031e9284855a60f0db7598c",
+      "sha256": "0544bcf72f625fedd7264daebd732b925aa3c5acb96d94f2ede59c41258d8e2c",
       "size_bytes": 6667
     },
     {
@@ -382,8 +382,8 @@
     },
     {
       "path": "src/retroz_s1/synthetic.py",
-      "sha256": "bb2a19a349650d3d7678fd8826e4275c556a9b282d86c3e3d1d55f5f139e4002",
-      "size_bytes": 5050
+      "sha256": "9150b9026638805b0579322916e9cdf22a7f66ea64f8d35e847b304883361d15",
+      "size_bytes": 5301
     },
     {
       "path": "tests/test_assets_and_manifest.py",
@@ -392,8 +392,8 @@
     },
     {
       "path": "tests/test_candidates.py",
-      "sha256": "daf6167faad81e6d58ae37e12b0a73039e51bd52392e91604c569ba5f93713e2",
-      "size_bytes": 2358
+      "sha256": "32f9f2fc5ac279139a6e008a0660458e18c9433a37843f36ac0852d5142c19c9",
+      "size_bytes": 2820
     },
     {
       "path": "tests/test_cli.py",
