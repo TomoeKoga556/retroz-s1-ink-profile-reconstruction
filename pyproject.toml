@@ -43,7 +43,7 @@ docs = [
 ]
 reproduce = [
   "numpy==2.3.5",
-  "Pillow==12.2.0",
+  "Pillow==12.3.0",
   "matplotlib==3.10.8",
   "PyYAML==6.0.3",
   "mkdocs==1.6.1",
