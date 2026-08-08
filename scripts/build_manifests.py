@@ -33,7 +33,10 @@ def digest(path: Path) -> str:
 
 def included(path: Path) -> bool:
     relative = path.relative_to(ROOT)
-    return path.is_file() and not any(part in SKIP_PARTS for part in relative.parts)
+    return path.is_file() and not any(
+        part in SKIP_PARTS or part.endswith(".egg-info")
+        for part in relative.parts
+    )
 
 
 def entries(paths: list[Path]) -> list[dict[str, object]]:

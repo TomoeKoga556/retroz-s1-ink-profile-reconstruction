@@ -17,8 +17,8 @@
     },
     {
       "path": "scripts/build_manifests.py",
-      "sha256": "19c452d6f25d26956a7886995887caf07678526996b8de179ad2286ddcdae537",
-      "size_bytes": 2724
+      "sha256": "e6fc0f4cbe9f9735e03b26355bd5a8a3ec1001caa766ec8bb13cdb23cfc48e55",
+      "size_bytes": 2776
     },
     {
       "path": "scripts/build_release.py",
@@ -129,36 +129,6 @@
       "path": "src/retroz_s1/synthetic.py",
       "sha256": "bb2a19a349650d3d7678fd8826e4275c556a9b282d86c3e3d1d55f5f139e4002",
       "size_bytes": 5050
-    },
-    {
-      "path": "src/retroz_s1.egg-info/PKG-INFO",
-      "sha256": "b8ea941ff4dcc20eb870c9c4cb08996051771f19f0b6c0569c77170d82d17754",
-      "size_bytes": 8220
-    },
-    {
-      "path": "src/retroz_s1.egg-info/SOURCES.txt",
-      "sha256": "8f1de8737fbb905eb9556e9795547c4861e06947cb79c0be38dabacec85a0b30",
-      "size_bytes": 938
-    },
-    {
-      "path": "src/retroz_s1.egg-info/dependency_links.txt",
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "size_bytes": 1
-    },
-    {
-      "path": "src/retroz_s1.egg-info/entry_points.txt",
-      "sha256": "c6920a601ac6852b8d34abca91e08826bd824b0d81c5586cd32a76808417d91c",
-      "size_bytes": 49
-    },
-    {
-      "path": "src/retroz_s1.egg-info/requires.txt",
-      "sha256": "84a524e57fcd4cbdec5dd1b280c0f8ea0b3e116d0c86cf954ee946f02abee152",
-      "size_bytes": 271
-    },
-    {
-      "path": "src/retroz_s1.egg-info/top_level.txt",
-      "sha256": "3c60badd60633deec6085f43a57d2a7586df87bc2c81a6fc567820ce3dc27d90",
-      "size_bytes": 10
     },
     {
       "path": "tests/test_assets_and_manifest.py",
